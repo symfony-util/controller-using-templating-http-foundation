@@ -17,6 +17,7 @@
         "escapestudios/symfony2-coding-standard": "^2.11"
     },
     "suggest": {
+        "symfony-util/controller-using-templating-http-foundation-http-kernel": "To use the right dependencies to be able to call the provided controller from Symfony (HttpKernel)"
     },
     "autoload": {
         "psr-4": { "SymfonyUtil\\Controller\\": "" }
