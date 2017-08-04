@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace SymfonyUtil\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
