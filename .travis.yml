@@ -20,7 +20,7 @@ matrix:
     - php: 7.0
     - php: 7.1
     - php: 7.2
-- php: nightly
+    - php: nightly
 
 before_install:
   - if [ -f /home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini ]; then phpenv config-rm xdebug.ini; fi
