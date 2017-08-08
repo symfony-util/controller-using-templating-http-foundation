@@ -1,6 +1,14 @@
 # controller-using-templating-http-foundation
 Controller which renders a template and returns a response (HttpFoundation)
 
+[![PHPPackages Rank](https://phppackages.org/p/symfony-util/controller-using-templating-http-foundation/badge/rank.svg)](https://phppackages.org/p/symfony-util/controller-using-templating-http-foundation)
+[![Monthly Downloads](https://poser.pugx.org/symfony-util/controller-using-templating-http-foundation/d/monthly)](https://packagist.org/packages/symfony-util/controller-using-templating-http-foundation)
+[![PHPPackages Referenced By](https://phppackages.org/p/symfony-util/controller-using-templating-http-foundation/badge/referenced-by.svg)](https://phppackages.org/p/symfony-util/controller-using-templating-http-foundation)
+[![Tested PHP Versions](https://php-eye.com/badge/symfony-util/controller-using-templating-http-foundation/tested.svg)](https://php-eye.com/package/symfony-util/controller-using-templating-http-foundation)
+[![Dependency Status](https://www.versioneye.com/php/symfony-util:controller-using-templating-http-foundation/badge)](https://www.versioneye.com/php/symfony-util:controller-using-templating-http-foundation)
+[![Build Status](https://travis-ci.org/symfony-util/controller-using-templating-http-foundation.svg?branch=master)](https://travis-ci.org/symfony-util/controller-using-templating-http-foundation)
+[![Code Coverage](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/?branch=master)
+
 ### EngineAsArgumentController
 * Uses Engine as controller argument for easier configuration with Symfony 3.3
 * Because Twig was not found in autoconfig as a constructor argument
