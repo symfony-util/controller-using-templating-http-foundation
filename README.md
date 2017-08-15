@@ -49,6 +49,8 @@ protected function configureContainer(ContainerBuilder $c, LoaderInterface $load
     // ...
 ```
 
+Icon: https://material.io/icons/#ic_wallpaper
+
 ### TODO
 #### PHP 7
 ##### _string_ arguments
