@@ -10,6 +10,10 @@
  */
 
 use PHPUnit\Framework\TestCase;
+// use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Bridge\Twig\TwigEngine;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Templating\TemplateNameParser;
 use SymfonyUtil\Controller\EngineAsArgumentController;
 
 /**
@@ -25,13 +29,17 @@ final class EngineAsArgumentControllerTest extends TestCase
         );
     }
 
-    /*
     public function testReturnsResponse()
     {
         $this->assertInstanceOf(
-            Table::class,
-            (new SchemaBuilder(new Schema()))->userTable()
+            Response::class,
+            (new EngineAsArgumentController())(new TwigEngine(
+                new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+                new TemplateNameParser
+            ))
         );
     }
-    */
 }
+
+// http://api.symfony.com/3.3/Symfony/Bundle/TwigBundle/TwigEngine.html
+// http://api.symfony.com/3.3/Symfony/Bridge/Twig/TwigEngine.html
