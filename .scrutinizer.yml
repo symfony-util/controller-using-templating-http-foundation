@@ -2,7 +2,7 @@ build:
     tests:
         override:
             -
-                command: 'wget https://phar.phpunit.de/phpunit.phar --output-document=./phpunit; php phpunit tests'
+                command: 'wget https://phar.phpunit.de/phpunit.phar --output-document=./phpunit; php phpunit'
                 coverage:
                     file: '/tmp/coverage.xml'
                     format: 'clover'
