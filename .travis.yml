@@ -68,7 +68,7 @@ before_install:
 install:
   - composer validate
   - composer install --no-scripts --no-progress --no-suggest
-  # - cp config/parameters.yml.travis config/parameters.yml
+  - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
   - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
   - composer show
 
