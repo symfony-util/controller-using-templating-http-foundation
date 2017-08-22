@@ -7,7 +7,12 @@ Controller which renders a template and returns a response (HttpFoundation)
 [![Tested PHP Versions](https://php-eye.com/badge/symfony-util/controller-using-templating-http-foundation/tested.svg)](https://php-eye.com/package/symfony-util/controller-using-templating-http-foundation)
 [![Dependency Status](https://www.versioneye.com/php/symfony-util:controller-using-templating-http-foundation/badge)](https://www.versioneye.com/php/symfony-util:controller-using-templating-http-foundation)
 [![Build Status](https://travis-ci.org/symfony-util/controller-using-templating-http-foundation.svg?branch=master)](https://travis-ci.org/symfony-util/controller-using-templating-http-foundation)
-[![Code Coverage](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/?branch=master)
+[![Code Coverage](https://img.shields.io/codecov/c/github/symfony-util/controller-using-templating-http-foundation/master.svg)](https://codecov.io/gh/symfony-util/controller-using-templating-http-foundation)
+[![Scrutinizer](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/symfony-util/controller-using-templating-http-foundation/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/bd7effd4-bf8c-41de-8568-02292fcdd262/mini.png)](https://insight.sensiolabs.com/projects/bd7effd4-bf8c-41de-8568-02292fcdd262)
+<!---
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/bd7effd4-bf8c-41de-8568-02292fcdd262.svg)](https://insight.sensiolabs.com/projects/bd7effd4-bf8c-41de-8568-02292fcdd262)
+-->
 
 ### EngineAsArgumentController
 * Uses Engine as controller argument for easier configuration with Symfony 3.3
