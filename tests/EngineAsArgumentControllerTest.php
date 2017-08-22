@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Symfony Util package.
+ * This file is part of the Symfony-Util package.
  *
  * (c) Jean-Bernard Addor
  *
@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use SymfonyUtil\Controller\EngineAsArgumentController;
 use PHPUnit\Framework\TestCase;
+use SymfonyUtil\Controller\EngineAsArgumentController;
 
 /**
  * @covers \SymfonyUtil\Controller\EngineAsArgumentController
