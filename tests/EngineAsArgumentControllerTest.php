@@ -35,7 +35,7 @@ final class EngineAsArgumentControllerTest extends TestCase
             Response::class,
             (new EngineAsArgumentController())->__invoke(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
-                new TemplateNameParser
+                new TemplateNameParser()
             ))
         );
     }
