@@ -23,7 +23,8 @@ final class EngineAsArgumentControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            EngineAsArgumentController::class,
+            // EngineAsArgumentController::class, // 5.4 < php
+            'EngineAsArgumentController',
             new EngineAsArgumentController()
         );
     }
