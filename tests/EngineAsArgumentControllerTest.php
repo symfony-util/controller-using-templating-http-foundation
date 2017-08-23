@@ -24,7 +24,7 @@ final class EngineAsArgumentControllerTest extends TestCase
     {
         $this->assertInstanceOf(
             // EngineAsArgumentController::class, // 5.4 < php
-            'EngineAsArgumentController',
+            'SymfonyUtil\Controller\EngineAsArgumentController',
             new EngineAsArgumentController()
         );
     }
