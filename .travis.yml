@@ -12,6 +12,7 @@ matrix:
     - php: 5.4
       env:
         - PHPUNIT=phpunit-4.8
+        - TEST_LINT=`true`
     - php: 5.5
       env:
         - PHPUNIT=phpunit-4.8
