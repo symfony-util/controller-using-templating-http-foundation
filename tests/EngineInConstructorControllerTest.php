@@ -25,7 +25,10 @@ final class EngineInConstructorControllerTest extends TestCase
         $this->assertInstanceOf(
             // EngineInConstructorController::class, // 5.4 < php
             'SymfonyUtil\Controller\EngineInConstructorController',
-            new EngineInConstructorController()
+            new EngineInConstructorController(new TwigEngine(
+                new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+                new TemplateNameParser()
+            ))
         );
     }
 
