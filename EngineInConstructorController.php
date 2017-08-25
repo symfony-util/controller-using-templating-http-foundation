@@ -27,6 +27,6 @@ class EngineInConstructorController
 
     public function __invoke()
     {
-        return new Response($this->$templating->render($this->template));
+        return new Response($this->templating->render($this->template));
     }
 }
