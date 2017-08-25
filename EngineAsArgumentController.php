@@ -16,6 +16,8 @@ use Symfony\Component\Templating\EngineInterface;
 
 class EngineAsArgumentController
 {
+    protected $template;
+
     public function __construct($template = 'index.html.twig')
     {
         $this->template = $template;
