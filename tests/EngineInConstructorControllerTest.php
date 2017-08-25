@@ -16,16 +16,16 @@ use Symfony\Component\Templating\TemplateNameParser;
 use SymfonyUtil\Controller\EngineAsArgumentController;
 
 /**
- * @covers \SymfonyUtil\Controller\EngineAsArgumentController
+ * @covers \SymfonyUtil\Controller\EngineInConstructorController
  */
 final class EngineInConstructorControllerTest extends TestCase
 {
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // EngineAsArgumentController::class, // 5.4 < php
-            'SymfonyUtil\Controller\EngineAsArgumentController',
-            new EngineAsArgumentController()
+            // EngineInConstructorController::class, // 5.4 < php
+            'SymfonyUtil\Controller\EngineInConstructorController',
+            new EngineInConstructorController()
         );
     }
 
@@ -34,10 +34,10 @@ final class EngineInConstructorControllerTest extends TestCase
         $this->assertInstanceOf(
             // Response::class, // 5.4 < php
             'Symfony\Component\HttpFoundation\Response',
-            (new EngineAsArgumentController())->__invoke(new TwigEngine(
+            (new EngineInConstructorController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
-            ))
+            )))->__invoke()
         );
     }
 }
