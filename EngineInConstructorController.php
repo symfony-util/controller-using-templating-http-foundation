@@ -21,7 +21,7 @@ class EngineInConstructorController
 
     public function __construct(EngineInterface $templating, $template = 'index.html.twig')
     {
-        $this->templating = $template;
+        $this->templating = $templating;
         $this->template = $template;
     }
 
