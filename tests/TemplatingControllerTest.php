@@ -13,31 +13,31 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\TemplateNameParser;
-use SymfonyUtil\Controller\EngineInConstructorController;
+use SymfonyUtil\Controller\TemplatingController;
 
 /**
  * @covers \SymfonyUtil\Controller\EngineInConstructorController
  */
-final class EngineInConstructorControllerTest extends TestCase
+final class TemplatingControllerTest extends TestCase
 {
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // EngineInConstructorController::class, // 5.4 < php
-            'SymfonyUtil\Controller\EngineInConstructorController',
-            new EngineInConstructorController(new TwigEngine(
+            // ::class, // 5.4 < php
+            'SymfonyUtil\Controller\TemplatingController',
+            new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             ))
         );
     }
 
-    public function testReturnsResponse()
+    public function testEmptyReturnsResponse()
     {
         $this->assertInstanceOf(
             // Response::class, // 5.4 < php
             'Symfony\Component\HttpFoundation\Response',
-            (new EngineInConstructorController(new TwigEngine(
+            (new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             )))->__invoke()
