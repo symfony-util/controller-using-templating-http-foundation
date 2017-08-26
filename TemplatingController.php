@@ -27,8 +27,6 @@ class TemplatingController
 
     public function __invoke()
     {
-        dump($arguments);
-
         return new Response($this->templating->render($this->template));
     }
 }
