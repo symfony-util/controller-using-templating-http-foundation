@@ -14,7 +14,7 @@ namespace SymfonyUtil\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
-class TemplatingController
+class VariadicController
 {
     protected $templating;
     protected $template;
