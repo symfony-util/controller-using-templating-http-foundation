@@ -50,7 +50,9 @@ final class TemplatingControllerTest extends TestCase
             // Response::class, // 5.4 < php
             'Symfony\Component\HttpFoundation\Response',
             (new TemplatingController(new TwigEngine(
-                new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+                new Twig_Environment(new Twig_Loader_Array([
+                    'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>'
+                ])),
                 new TemplateNameParser()
             )))->__invoke([
                 'One',
