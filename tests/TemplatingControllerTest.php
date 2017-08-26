@@ -43,6 +43,22 @@ final class TemplatingControllerTest extends TestCase
             )))->__invoke()
         );
     }
+
+    public function testArrayReturnsResponse()
+    {
+        $this->assertInstanceOf(
+            // Response::class, // 5.4 < php
+            'Symfony\Component\HttpFoundation\Response',
+            (new TemplatingController(new TwigEngine(
+                new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+                new TemplateNameParser()
+            )))->__invoke([
+                "One",
+                "Two",
+                "Three",
+            ])
+        );
+    }
 }
 
 // http://api.symfony.com/3.3/Symfony/Bridge/Twig/TwigEngine.html
