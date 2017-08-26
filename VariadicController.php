@@ -25,7 +25,7 @@ class TemplatingController
         $this->template = $template;
     }
 
-    public function __invoke(...$arguments) // PHP 5.6+
+    public function __invoke(...$arguments) // PHP 5.6+, apparently not supported when empty by Symfony 3.3.6 ArgumentResolver
     {
         dump($arguments);
 
