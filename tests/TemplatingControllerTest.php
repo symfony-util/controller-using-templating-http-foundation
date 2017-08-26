@@ -16,7 +16,7 @@ use Symfony\Component\Templating\TemplateNameParser;
 use SymfonyUtil\Controller\TemplatingController;
 
 /**
- * @covers \SymfonyUtil\Controller\EngineInConstructorController
+ * @covers \SymfonyUtil\Controller\TemplatingController
  */
 final class TemplatingControllerTest extends TestCase
 {
