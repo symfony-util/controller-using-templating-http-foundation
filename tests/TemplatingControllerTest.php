@@ -53,9 +53,9 @@ final class TemplatingControllerTest extends TestCase
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             )))->__invoke([
-                "One",
-                "Two",
-                "Three",
+                'One',
+                'Two',
+                'Three',
             ])
         );
     }
