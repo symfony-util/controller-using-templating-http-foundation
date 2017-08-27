@@ -25,9 +25,10 @@ class VariadicController
         $this->template = $template;
     }
 
-    public function __invoke(...$arguments) // PHP 5.6+, apparently not supported when empty by Symfony 3.3.6 ArgumentResolver
+    public function __invoke(...$arguments) // PHP 5.6+
     {
-        dump($arguments);
+        // Variadic $arguments apparently not supported when empty by Symfony 3.3.6 ArgumentResolver
+        // and viewed as a regular array by knplabs/rad-resource-resolver v2.1
 
         return new Response($this->templating->render($this->template, $arguments));
     }
