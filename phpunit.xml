@@ -19,11 +19,6 @@
         </whitelist>
     </filter>
 
-    <logging>
-        <log type="coverage-clover" target="/tmp/coverage.xml"/>
-        <log type="coverage-text" target="php://stdout"/>
-    </logging>
-
 </phpunit>
 <!--
          backupGlobals="false"
@@ -31,4 +26,10 @@ beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
+
+    <logging>
+        <log type="coverage-clover" target="/tmp/coverage.xml"/>
+        <log type="coverage-text" target="php://stdout"/>
+    </logging>
+
 -->
