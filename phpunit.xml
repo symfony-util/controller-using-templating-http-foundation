@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.7/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          verbose="true"
-         colors="true">
+         colors="always">
     <testsuite>
         <directory suffix="Test.php">tests</directory>
     </testsuite>
