@@ -2,8 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.7/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         verbose="true"
-         colors="always">
+         verbose="true">
     <testsuite>
         <directory suffix="Test.php">tests</directory>
     </testsuite>
@@ -27,6 +26,8 @@ beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
+
+         colors="always" Does not work with PHPUnit <= 6.5.2
 
     <logging>
         <log type="coverage-clover" target="/tmp/coverage.xml"/>
