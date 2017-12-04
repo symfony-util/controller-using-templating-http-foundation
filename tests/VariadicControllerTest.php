@@ -17,6 +17,7 @@ use SymfonyUtil\Controller\VariadicController;
 
 /**
  * @covers \SymfonyUtil\Controller\VariadicController
+ * @requires PHP 5.6.0
  */
 final class VariadicControllerTest extends TestCase
 {
