@@ -85,7 +85,7 @@ script:
   - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
   # - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always $(( [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]?:--coverage-text --coverage-clover /tmp/coverage.xml )); fi
-  - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always $((5.5<$TRAVIS_PHP_VERSION?:--coverage-text --coverage-clover /tmp/coverage.xml )); fi
+  - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always $(("5.5"<$TRAVIS_PHP_VERSION?:--coverage-text --coverage-clover /tmp/coverage.xml )); fi
   # - if [[ -v PHPUNIT ]]; then if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always --coverage-text --coverage-clover /tmp/coverage.xml; else php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always; fi; fi
   
   - if [[ -v SENSIO_SECURITY ]]; then php .travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock; fi
