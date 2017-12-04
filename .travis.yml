@@ -49,7 +49,6 @@ matrix:
   allow_failures:
     - php: 5.4
     - php: 5.5 # needs older phpunit
-    - php: 7.2
     - php: nightly
 
 before_install:
@@ -79,7 +78,7 @@ install:
 before_script:
 
 script:
-  - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
+  - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -path VariadicController.php -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
   - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
   - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer --version; fi
   - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
