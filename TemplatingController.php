@@ -20,7 +20,7 @@ class TemplatingController
     protected $templating;
     protected $template;
 
-    public function __construct(EngineInterface $templating, $template = TEMPLATE)
+    public function __construct(EngineInterface $templating, $template = self::TEMPLATE)
     {
         $this->templating = $templating;
         $this->template = $template;
