@@ -16,10 +16,11 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TemplatingController
 {
+    const TEMPLATE = 'index.html.twig';
     protected $templating;
     protected $template;
 
-    public function __construct(EngineInterface $templating, $template = 'index.html.twig')
+    public function __construct(EngineInterface $templating, $template = TEMPLATE)
     {
         $this->templating = $templating;
         $this->template = $template;
