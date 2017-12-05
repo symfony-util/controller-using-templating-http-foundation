@@ -24,8 +24,8 @@ final class VariadicControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // ::class, // 5.4 < php
-            'SymfonyUtil\Controller\VariadicController',
+            VariadicController::class, // 5.4 < php
+            // 'SymfonyUtil\Controller\VariadicController',
             new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
