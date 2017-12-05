@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\TemplateNameParser;
 use SymfonyUtil\Controller\TemplatingController;
 
+class HomeTemplatingController extends TemplatingController // To test more in details
+{
+    const TEMPLATE = 'home.html.twig';
+}
+
 /**
  * @covers \SymfonyUtil\Controller\TemplatingController
  */
@@ -27,6 +32,18 @@ final class TemplatingControllerTest extends TestCase
             'SymfonyUtil\Controller\TemplatingController',
             new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+                new TemplateNameParser()
+            ))
+        );
+    }
+
+    public function testHomeCanBeCreated()
+    {
+        $this->assertInstanceOf(
+            // ::class, // 5.4 < php
+            'SymfonyUtil\Controller\TemplatingController',
+            new HomeTemplatingController(new TwigEngine(
+                new Twig_Environment(new Twig_Loader_Array(['home.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             ))
         );
