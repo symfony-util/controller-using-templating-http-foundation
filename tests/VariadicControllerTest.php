@@ -24,7 +24,8 @@ final class VariadicControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            VariadicController::class,
+            // VariadicController::class, // 5.4 < php (code is checked even if not executed!)
+            'SymfonyUtil\Controller\VariadicController',
             new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -35,7 +36,8 @@ final class VariadicControllerTest extends TestCase
     public function testEmptyReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class,
+            // Response::class, // 5.4 < php (code is checked even if not executed!)
+            'Symfony\Component\HttpFoundation\Response',
             (new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -46,7 +48,8 @@ final class VariadicControllerTest extends TestCase
     public function testArrayReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class,
+            // Response::class, // 5.4 < php (code is checked even if not executed!)
+            'Symfony\Component\HttpFoundation\Response',
             (new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array([
                     'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
