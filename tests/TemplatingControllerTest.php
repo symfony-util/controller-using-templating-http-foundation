@@ -71,7 +71,7 @@ final class TemplatingControllerTest extends TestCase
                     'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
                 ])),
                 new TemplateNameParser()
-            )))->__invoke([
+            )))->__invoke([ // This is strange.
                 'One',
                 'Two',
                 'Three',
