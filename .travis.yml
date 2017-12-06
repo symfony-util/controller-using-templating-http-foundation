@@ -19,46 +19,7 @@ matrix:
     - php: 7.0
       env:
       # - SYMFONY="3"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - PHP_CS_FIXER=`true`
-      - SENSIO_SECURITY=`true`
-    - php: 7.1
-      env:
-      - SYMFONY_LTS="3"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - PHP_CS_FIXER=`true`
-      - SENSIO_SECURITY=`true`
-    - php: 7.1
-      env:
-      # - SYMFONY="4"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - PHP_CS_FIXER=`true`
-      - SENSIO_SECURITY=`true`
-    - php: 7.2
-      env:
-      - SYMFONY_LTS="3"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - SENSIO_SECURITY=`true`
-    - php: 7.2
-      env:
-      # - SYMFONY="4"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - SENSIO_SECURITY=`true`
-    - php: nightly
-      env:
-      - SYMFONY_LTS="3"
-      - PHPUNIT=phpunit
-      - TEST_LINT=`true`
-      - SENSIO_SECURITY=`true`
-    - php: nightly
-      env:
-      # - SYMFONY="4"
-      - PHPUNIT=phpunit
+      - PHPUNIT=phpunit-4.8
       - TEST_LINT=`true`
       - SENSIO_SECURITY=`true`
   allow_failures:
