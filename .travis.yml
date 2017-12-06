@@ -11,13 +11,13 @@ matrix:
   include:
   - php: 5.5
     env:
-    - SYMFONY_VERSION="2.3"
+    - SYMFONY_VERSION="2.3.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
   - php: 5.5
     env:
-    - SYMFONY_VERSION="2.7"
+    - SYMFONY_VERSION="2.7.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
