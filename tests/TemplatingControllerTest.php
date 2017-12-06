@@ -39,8 +39,7 @@ final class TemplatingControllerTest extends TestCase
     public function testHomeCanBeCreated()
     {
         $this->assertInstanceOf(
-            // ::class, // 5.4 < php
-            'SymfonyUtil\Controller\TemplatingController',
+            TemplatingController::class, // 5.4 < php
             new HomeTemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['home.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -51,8 +50,7 @@ final class TemplatingControllerTest extends TestCase
     public function testEmptyReturnsResponse()
     {
         $this->assertInstanceOf(
-            // Response::class, // 5.4 < php
-            'Symfony\Component\HttpFoundation\Response',
+            Response::class, // 5.4 < php
             (new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -63,8 +61,7 @@ final class TemplatingControllerTest extends TestCase
     public function testArrayReturnsResponse()
     {
         $this->assertInstanceOf(
-            // Response::class, // 5.4 < php
-            'Symfony\Component\HttpFoundation\Response',
+            Response::class, // 5.4 < php
             (new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array([
                     'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
