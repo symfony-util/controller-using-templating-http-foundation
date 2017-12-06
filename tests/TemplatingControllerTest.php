@@ -28,8 +28,7 @@ final class TemplatingControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // TemplatingController::class, // 5.4 < php
-            'SymfonyUtil\Controller\TemplatingController',
+            TemplatingController::class, // 5.4 < php
             new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
