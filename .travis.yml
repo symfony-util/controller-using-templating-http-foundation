@@ -9,16 +9,60 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - php: 5.4
+    - php: 5.6
       env:
-      - SYMFONY_VERSION="2.3.*"
-      - PHPUNIT=phpunit-4.8
+      # - SYMFONY="3"
+      - PHPUNIT=phpunit-5.7
       - TEST_LINT=`true`
-    - php: 5.4
+      - PHP_CS_FIXER=`true`
+      - SENSIO_SECURITY=`true`
+    - php: 7.0
       env:
-      - SYMFONY_LTS="2"
-      - PHPUNIT=phpunit-4.8
+      # - SYMFONY="3"
+      - PHPUNIT=phpunit
       - TEST_LINT=`true`
+      - PHP_CS_FIXER=`true`
+      - SENSIO_SECURITY=`true`
+    - php: 7.1
+      env:
+      - SYMFONY_LTS="3"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - PHP_CS_FIXER=`true`
+      - SENSIO_SECURITY=`true`
+    - php: 7.1
+      env:
+      # - SYMFONY="4"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - PHP_CS_FIXER=`true`
+      - SENSIO_SECURITY=`true`
+    - php: 7.2
+      env:
+      - SYMFONY_LTS="3"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - SENSIO_SECURITY=`true`
+    - php: 7.2
+      env:
+      # - SYMFONY="4"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - SENSIO_SECURITY=`true`
+    - php: nightly
+      env:
+      - SYMFONY_LTS="3"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - SENSIO_SECURITY=`true`
+    - php: nightly
+      env:
+      # - SYMFONY="4"
+      - PHPUNIT=phpunit
+      - TEST_LINT=`true`
+      - SENSIO_SECURITY=`true`
+  allow_failures:
+    - php: nightly
 
 before_install:
   - echo $PHPUNIT
