@@ -9,21 +9,29 @@ cache:
 matrix:
   fast_finish: true
   include:
-  - php: 5.4
+  - php: 5.5
     env:
     - SYMFONY_VERSION="2.3"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-  - php: 5.4
+    - SENSIO_SECURITY=`true`
+  - php: 5.5
     env:
     - SYMFONY_VERSION="2.7"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-  - php: 5.4
+    - SENSIO_SECURITY=`true`
+  - php: 5.5
     env:
     - SYMFONY="2"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 5.5
+    env:
+    - PHPUNIT=phpunit-4.8
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
 
 before_install:
   - echo $PHPUNIT
