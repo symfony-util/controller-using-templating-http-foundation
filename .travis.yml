@@ -23,12 +23,13 @@ matrix:
     - SENSIO_SECURITY=`true`
   - php: 5.5
     env:
-    - SYMFONY="2"
+    - SYMFONY_LTS="2"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
   - php: 5.5
     env:
+    - SYMFONY_LTS="3"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
