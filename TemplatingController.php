@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the Symfony-Util package.
  *
@@ -18,17 +16,18 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TemplatingController
 {
-    const TEMPLATE = 'index.html.twig';
     protected $templating;
-    protected $template;
+    const TEMPLATE = 'index.html.twig';
+    protected $template = self::TEMPLATE;
 
-    public function __construct(EngineInterface $templating, string $template = self::TEMPLATE)
+    public function __construct(EngineInterface $templating, string $template = NULL)
     {
         $this->templating = $templating;
-        $this->template = $template;
+        if ($template)
+            $this->template = $template;
     }
 
-    public function __invoke(): Response
+    public function __invoke()
     {
         return new Response($this->templating->render($this->template));
     }
