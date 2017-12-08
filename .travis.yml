@@ -9,38 +9,154 @@ cache:
 matrix:
   fast_finish: true
   include:
-  - php: 5.4
+  - php: 7.0
     env:
-    - SYMFONY_VERSION="2.3"
-    - PHPUNIT=phpunit-4.8
+    - SYMFONY_VERSION="2.3.*"
+    - PHPUNIT=phpunit-5.7
     - TEST_LINT=`true`
-  - php: 5.4
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.0
     env:
-    - SYMFONY_VERSION="2.7"
-    - PHPUNIT=phpunit-4.8
+    - SYMFONY_VERSION="2.7.*"
+    - PHPUNIT=phpunit-5.7
     - TEST_LINT=`true`
-  - php: 5.4
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.0
     env:
     - SYMFONY_LTS="2"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.0
+    env:
+    - SYMFONY_LTS="3"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_VERSION="2.3.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_VERSION="2.7.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_LTS="2"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_LTS="3"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_LTS="4.x-dev@dev"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_VERSION="2.3.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_VERSION="2.7.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_LTS="2"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_LTS="3"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_LTS="4.x-dev@dev"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_VERSION="2.3.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_VERSION="2.7.*"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_LTS="2"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_LTS="3"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_LTS="4.x-dev@dev"
+    - PHPUNIT=phpunit-5.7
+    - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  allow_failures:
+  - php: nightly
 
 before_install:
-  - echo $PHPUNIT
-  - pwd
-  - echo $HOME
-  - echo $TRAVIS_PHP_VERSION
-  - which composer
-  - ls /tmp
-  - php --ini
-  - xdebug=/home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
-  - if [[ -f $xdebug ]]; then cat $xdebug; cp $xdebug /tmp; phpenv config-rm xdebug.ini; fi
-  - xdebug_php=
-  - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
-  - install --directory .travis/bin
-  - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
-  - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
-  - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
+- source /etc/os-release ; echo $VERSION
+- echo $PHPUNIT
+- pwd
+- echo $HOME
+- echo $TRAVIS_PHP_VERSION
+- which composer
+- ls /tmp
+- php --ini
+- xdebug=/home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
+- if [[ -f $xdebug ]]; then cat $xdebug; cp $xdebug /tmp; phpenv config-rm xdebug.ini; fi
+- xdebug_php=
+- if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
+- install --directory .travis/bin
+- if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
+- if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
+- if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
 install:
   - composer validate

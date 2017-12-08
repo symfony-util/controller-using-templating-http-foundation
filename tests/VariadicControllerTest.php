@@ -13,36 +13,21 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\TemplateNameParser;
-use SymfonyUtil\Controller\TemplatingController;
-
-class HomeTemplatingController extends TemplatingController // To test more in details
-{
-    const TEMPLATE = 'home.html.twig';
-}
+use SymfonyUtil\Controller\VariadicController;
 
 /**
- * @covers \SymfonyUtil\Controller\TemplatingController
+ * @covers \SymfonyUtil\Controller\VariadicController
+ * @requires PHP 5.6.0
  */
-final class TemplatingControllerTest extends TestCase
+final class VariadicControllerTest extends TestCase
 {
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // TemplatingController::class, // 5.4 < php
-            'SymfonyUtil\Controller\TemplatingController',
-            new TemplatingController(new TwigEngine(
+            // VariadicController::class, // 5.4 < php (code is checked even if not executed!)
+            'SymfonyUtil\Controller\VariadicController',
+            new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
-                new TemplateNameParser()
-            ))
-        );
-    }
-
-    public function testHomeCanBeCreated()
-    {
-        $this->assertInstanceOf(
-            TemplatingController::class, // 5.4 < php
-            new HomeTemplatingController(new TwigEngine(
-                new Twig_Environment(new Twig_Loader_Array(['home.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             ))
         );
@@ -51,8 +36,9 @@ final class TemplatingControllerTest extends TestCase
     public function testEmptyReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class, // 5.4 < php
-            (new TemplatingController(new TwigEngine(
+            // Response::class, // 5.4 < php (code is checked even if not executed!)
+            'Symfony\Component\HttpFoundation\Response',
+            (new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
             )))->__invoke()
@@ -62,13 +48,14 @@ final class TemplatingControllerTest extends TestCase
     public function testArrayReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class, // 5.4 < php
-            (new TemplatingController(new TwigEngine(
+            // Response::class, // 5.4 < php (code is checked even if not executed!)
+            'Symfony\Component\HttpFoundation\Response',
+            (new VariadicController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array([
                     'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
                 ])),
                 new TemplateNameParser()
-            )))->__invoke([ // This is strange.
+            )))->__invoke([
                 'One',
                 'Two',
                 'Three',
