@@ -16,14 +16,15 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TemplatingController
 {
-    const TEMPLATE = 'index.html.twig';
     protected $templating;
-    protected $template;
+    const TEMPLATE = 'index.html.twig';
+    protected $template = TEMPLATE;
 
-    public function __construct(EngineInterface $templating, string $template = NULL) // self::TEMPLATE)
+    public function __construct(EngineInterface $templating, string $template = NULL)
     {
         $this->templating = $templating;
-        $this->template = $template;
+        if ($template)
+            $this->template = $template;
     }
 
     public function __invoke()
