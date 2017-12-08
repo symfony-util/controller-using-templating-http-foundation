@@ -64,3 +64,12 @@ Icon: https://material.io/icons/#ic_wallpaper
 ##### _string_ arguments
 * string arguments can officially be type-hinted from php 7.0
 * http://php.net/manual/en/functions.arguments.php
+
+### Versions
+#### PHP
+##### 5.5 TemplatingController::class in unit tests
+##### 5.6 __invoke(...$arguments) in VariadicController.php
+##### 7.0
+* declare(strict_types=1);
+* function f(): float
+* function s(string $s)
