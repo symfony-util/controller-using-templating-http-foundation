@@ -16,6 +16,7 @@ use Symfony\Component\Templating\EngineInterface;
 
 class VariadicController
 {
+    const TEMPLATE = 'index.html.twig';
     protected $templating;
     protected $template;
 
