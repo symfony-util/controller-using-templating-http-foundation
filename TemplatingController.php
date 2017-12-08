@@ -18,7 +18,7 @@ class TemplatingController
 {
     protected $templating;
     const TEMPLATE = 'index.html.twig';
-    protected $template = TEMPLATE;
+    protected $template = self::TEMPLATE;
 
     public function __construct(EngineInterface $templating, string $template = NULL)
     {
