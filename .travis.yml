@@ -37,6 +37,13 @@ matrix:
     - TEST_LINT=`true`
     - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_LTS="3"
+    - PHPUNIT=phpunit
+    - TEST_LINT=`true`
+    - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
 
 before_install:
 - source /etc/os-release ; echo $VERSION
