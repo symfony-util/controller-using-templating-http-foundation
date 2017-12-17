@@ -19,7 +19,7 @@ class EngineAsArgumentController
     const TEMPLATE = 'index.html.twig';
     protected $template;
 
-    public function __construct($template = 'index.html.twig')
+    public function __construct($template = self::TEMPLATE)
     {
         $this->template = $template;
     }
