@@ -46,20 +46,19 @@ matrix:
     - SENSIO_SECURITY=`true`
 
 before_install:
-- source /etc/os-release ; echo $VERSION
-- echo $PHPUNIT
 - pwd
 - echo $HOME
+- ls --color $HOME
 - echo $TRAVIS_PHP_VERSION
 - which composer
-- ls /tmp
 - php --ini
 - xdebug=/home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
 - if [[ -f $xdebug ]]; then cat $xdebug; cp $xdebug /tmp; phpenv config-rm xdebug.ini; fi
 - xdebug_php=
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
-- install --directory .travis/bin
+- install --directory .travis/bin # use $HOME instead
 - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
+- if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer --version; fi
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
 - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
@@ -75,10 +74,8 @@ install:
 before_script:
 
 script:
-  - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php '!' -name VariadicController.php -print) ; do php -l $f ; done # Do this first!
-  - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php -l VariadicController.php; fi
+  - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
   - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
-  - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer --version; fi
   - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
   - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then PHPUNIT_COVERAGE="--coverage-text --coverage-clover /tmp/coverage.xml"; fi
