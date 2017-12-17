@@ -23,7 +23,7 @@ final class EngineAsArgumentControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            EngineAsArgumentController::class, // 5.4 < php
+            'SymfonyUtil\Controller\EngineAsArgumentController',
             new EngineAsArgumentController()
         );
     }
@@ -31,7 +31,7 @@ final class EngineAsArgumentControllerTest extends TestCase
     public function testReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class, // 5.4 < php
+            'Symfony\Component\HttpFoundation\Response',
             (new EngineAsArgumentController())->__invoke(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
