@@ -58,8 +58,8 @@ before_install:
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
 - install --directory .travis/bin # use $HOME instead
 # php-cs-fixer
-- if [[ "5.5" <= "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
-- if [[ "5.6" <= "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
 
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
 - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
@@ -79,7 +79,7 @@ script:
 - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
 - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
 # php-cs-fixer
-- if [[ "5.6" <= "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then PHPUNIT_COVERAGE="--coverage-text --coverage-clover /tmp/coverage.xml"; fi
 - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always $PHPUNIT_COVERAGE; fi
