@@ -14,19 +14,16 @@ matrix:
     - SYMFONY_VERSION="2.3.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_VERSION="2.7.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_LTS="2"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_LTS="3"
@@ -38,7 +35,6 @@ matrix:
     - SYMFONY_LTS="3"
     - PHPUNIT=phpunit
     - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
 
 before_install:
 - pwd
@@ -52,12 +48,15 @@ before_install:
 - xdebug_php=
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
 - install --directory .travis/bin # use $HOME instead
+
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
 
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
-- if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
+
+# SensioLabs Security Checker
+- if [[ "5.4" < "$TRAVIS_PHP_VERSION" ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
 install:
 - composer validate
@@ -73,14 +72,17 @@ before_script:
 script:
 - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
 - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
+
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then PHPUNIT_COVERAGE="--coverage-text --coverage-clover /tmp/coverage.xml"; fi
 - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php .travis/bin/$PHPUNIT --colors=always $PHPUNIT_COVERAGE; fi
-  
-- if [[ -v SENSIO_SECURITY ]]; then php .travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock; fi
+
+# SensioLabs Security Checker
+- if [[ "5.4" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock; fi
 #^ This checks that the application doesn't use dependencies with known security vulnerabilities
+
 - if [[ -v VENDOR_LINT ]]; then for f in $(find ./vendor -name \*.php); do php -l $f > /dev/null; done; fi
 #^ Should be the last line of install but sometimes long to execute and little can be done for errors found.
 
