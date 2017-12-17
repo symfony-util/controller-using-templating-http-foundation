@@ -38,7 +38,7 @@ final class TemplatingControllerTest extends TestCase
     public function testHomeCanBeCreated()
     {
         $this->assertInstanceOf(
-            'SymfonyUtil\Controller\TemplatingController'
+            'SymfonyUtil\Controller\TemplatingController',
             new HomeTemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['home.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
