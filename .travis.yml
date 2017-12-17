@@ -14,35 +14,30 @@ matrix:
     - SYMFONY_VERSION="2.3.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_VERSION="2.7.*"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_LTS="2"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
   - php: 5.4
     env:
     - SYMFONY_LTS="3"
     - PHPUNIT=phpunit-4.8
     - TEST_LINT=`true`
-    - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
   - php: 7.2
     env:
     - SYMFONY_LTS="3"
     - PHPUNIT=phpunit
     - TEST_LINT=`true`
-    - PHP_CS_FIXER=`true`
     - SENSIO_SECURITY=`true`
 
 before_install:
