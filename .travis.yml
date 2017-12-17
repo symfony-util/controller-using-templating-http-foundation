@@ -53,6 +53,11 @@ before_install:
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
 
+# PHPStan - PHP Static Analysis Tool
+# https://packagist.org/packages/phpstan/phpstan See Install
+# https://github.com/symfony/symfony/issues/25459
+
+# PHPUnit
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
 
 # SensioLabs Security Checker
