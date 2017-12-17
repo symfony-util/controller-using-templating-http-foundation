@@ -11,7 +11,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\TwigEngine;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\TemplateNameParser;
 use SymfonyUtil\Controller\TemplatingController;
 
@@ -28,7 +27,6 @@ final class TemplatingControllerTest extends TestCase
     public function testCanBeCreated()
     {
         $this->assertInstanceOf(
-            // TemplatingController::class, // 5.4 < php
             'SymfonyUtil\Controller\TemplatingController',
             new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
@@ -40,7 +38,7 @@ final class TemplatingControllerTest extends TestCase
     public function testHomeCanBeCreated()
     {
         $this->assertInstanceOf(
-            TemplatingController::class, // 5.4 < php
+            'SymfonyUtil\Controller\TemplatingController'
             new HomeTemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['home.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -51,7 +49,7 @@ final class TemplatingControllerTest extends TestCase
     public function testEmptyReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class, // 5.4 < php
+            'Symfony\Component\HttpFoundation\Response',
             (new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
                 new TemplateNameParser()
@@ -62,7 +60,7 @@ final class TemplatingControllerTest extends TestCase
     public function testArrayReturnsResponse()
     {
         $this->assertInstanceOf(
-            Response::class, // 5.4 < php
+            'Symfony\Component\HttpFoundation\Response',
             (new TemplatingController(new TwigEngine(
                 new Twig_Environment(new Twig_Loader_Array([
                     'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
