@@ -38,10 +38,12 @@ before_install:
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
 - install --directory .travis/bin # use $HOME instead
 - ls --color $HOME
+- ls --color ~
 - ls --color $HOME/bin
 - ls --color ~/bin
 - install --directory ~/bin # use $HOME instead
 - ls --color $HOME
+- ls --color ~
 - ls --color $HOME/bin
 - ls --color ~/bin
 
@@ -54,10 +56,10 @@ before_install:
 # https://github.com/symfony/symfony/issues/25459
 
 # PHPUnit
-- if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=~/bin/phpunit; fi
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=~/bin/phpunit; fi
-- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=~/bin/phpunit; fi
-- if [[ "5.6" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-4.8.phar --output-document=~/bin/phpunit; fi
+- if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=$HOME/bin/phpunit; fi
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
+- if [[ "5.6" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-4.8.phar --output-document=$HOME/bin/phpunit; fi
 #^ Considere elif in separate shell file
 
 # SensioLabs Security Checker
