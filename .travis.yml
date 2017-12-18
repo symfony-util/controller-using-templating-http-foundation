@@ -92,7 +92,7 @@ script:
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
 # PHPStan - PHP Static Analysis Tool
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan.phar analyse *.php tests; fi
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan.phar analyse --level max *.php tests; fi
 
 # PHPUnit
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then PHPUNIT_COVERAGE="--coverage-text --coverage-clover /tmp/coverage.xml"; fi
