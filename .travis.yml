@@ -38,8 +38,12 @@ before_install:
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
 - install --directory .travis/bin # use $HOME instead
 - ls --color $HOME
+- ls --color $HOME/bin
+- ls --color ~/bin
 - install --directory ~/bin # use $HOME instead
 - ls --color $HOME
+- ls --color $HOME/bin
+- ls --color ~/bin
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
