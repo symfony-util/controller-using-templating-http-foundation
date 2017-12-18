@@ -37,7 +37,9 @@ before_install:
 - xdebug_php=
 - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
 - install --directory .travis/bin # use $HOME instead
+- ls --color $HOME
 - install --directory ~/bin # use $HOME instead
+- ls --color $HOME
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
@@ -49,7 +51,10 @@ before_install:
 
 # PHPUnit
 - if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=~/bin/phpunit; fi
-#     - PHPUNIT=phpunit-4.8
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=~/bin/phpunit; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=~/bin/phpunit; fi
+- if [[ "5.6" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-4.8.phar --output-document=~/bin/phpunit; fi
+#^ Considere elif in separate shell file
 
 # SensioLabs Security Checker
 - if [[ "5.4" < "$TRAVIS_PHP_VERSION" ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
