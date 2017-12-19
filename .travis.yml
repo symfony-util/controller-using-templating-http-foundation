@@ -63,8 +63,8 @@ before_install:
 # - if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=$HOME/bin/phpunit; fi # Initial release: February 2, 2018
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
-# PHP 7.0+
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; fi
+# PHP 7.0+ (and -)
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; else composer global require --dev phpunit/phpunit;fi
 - ls --color $HOME/.composer/vendor/bin
 # PHP 5.6
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
