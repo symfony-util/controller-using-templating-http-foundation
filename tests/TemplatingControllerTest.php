@@ -57,22 +57,6 @@ final class TemplatingControllerTest extends TestCase
         );
     }
 
-    public function testArrayReturnsResponse()
-    {
-        $this->assertInstanceOf(
-            'Symfony\Component\HttpFoundation\Response',
-            (new TemplatingController(new TwigEngine(
-                new Twig_Environment(new Twig_Loader_Array([
-                    'index.html.twig' => '<ul>{% for item in 0 %}<li>{{ item }}</li>{% endfor %}</ul>',
-                ])),
-                new TemplateNameParser()
-            )))->__invoke([ // This is strange.
-                'One',
-                'Two',
-                'Three',
-            ])
-        );
-    }
 }
 
 // http://api.symfony.com/3.3/Symfony/Bridge/Twig/TwigEngine.html
