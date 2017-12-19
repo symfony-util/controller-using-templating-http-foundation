@@ -56,7 +56,6 @@ final class TemplatingControllerTest extends TestCase
             )))->__invoke()
         );
     }
-
 }
 
 // http://api.symfony.com/3.3/Symfony/Bridge/Twig/TwigEngine.html
