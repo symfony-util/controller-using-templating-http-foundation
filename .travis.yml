@@ -53,17 +53,22 @@ before_install:
 
 # PHPStan - PHP Static Analysis Tool
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://github.com/phpstan/phpstan/releases/download/0.9.1/phpstan.phar --output-document=$HOME/bin/phpstan; fi
-#^ Needs frequent updates!
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-shim; fi
-- ls --color ~/.composer
+#^ Needs frequent updates! -> Now with PHPUnit
+# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-shim; fi
+# - ls --color ~/.composer
 # https://packagist.org/packages/phpstan/phpstan See Install
 # https://github.com/symfony/symfony/issues/25459
 
-# PHPUnit
+# PHPUnit (+ PHPStan)
 # - if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=$HOME/bin/phpunit; fi # Initial release: February 2, 2018
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
+# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
+# PHP 7.0+
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; fi
+- ls --color $HOME/.composer/vendor/bin
+# PHP 5.6
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
+# PHP <= 5.5
 - if [[ "5.6" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-4.8.phar --output-document=$HOME/bin/phpunit; fi
 #^ Considere elif in separate shell file
 
