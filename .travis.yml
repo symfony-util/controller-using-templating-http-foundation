@@ -77,11 +77,11 @@ before_install:
 
 install:
 - composer validate
-- if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest; fi
-- if [[ -v SYMFONY_LTS ]]; then composer require symfony/lts:${SYMFONY_LTS} --no-scripts --no-progress --no-suggest; fi
-# - composer install --no-scripts --no-progress --no-suggest
 - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
-- composer install --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
+- if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest --optimize-autoloader --apcu-autoloader; fi
+- if [[ -v SYMFONY_LTS ]]; then composer require symfony/lts:${SYMFONY_LTS} --no-scripts --no-progress --no-suggest --optimize-autoloader --apcu-autoloader; fi
+# - composer install --no-scripts --no-progress --no-suggest
+# - composer install --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
 - composer show
 
 before_script:
