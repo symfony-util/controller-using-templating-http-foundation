@@ -21,6 +21,17 @@ echo $process->run();
 echo $process->getErrorOutput();
 echo $process->getOutput();
 
+$process = (new ProcessBuilder(['composer']))->getProcess();
+echo "getCommandLine\n";
+echo $process->getCommandLine();
+echo "run\n";
+echo $process->run();
+echo "getErrorOutput\n";
+echo $process->getErrorOutput();
+echo "getOutput\n";
+echo $process->getOutput();
+echo "\n";
+
 if (7 <= PHP_MAJOR_VERSION) {
     $process = (new ProcessBuilder(['composer', 'global require --dev phpstan/phpstan-phpunit']))->getProcess();
     echo $process->getCommandLine();
