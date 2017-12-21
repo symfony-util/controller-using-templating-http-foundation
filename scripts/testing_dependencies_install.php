@@ -17,7 +17,7 @@ require __DIR__.'/vendor/autoload.php';
 function shellLikeExec($s)
 {
     $process = (new ProcessBuilder(explode(' ', $s)))->getProcess();
-    echo "run: ";
+    echo 'run: ';
     echo $process->run();
     echo PHP_EOL;
     echo "getErrorOutput\n";
