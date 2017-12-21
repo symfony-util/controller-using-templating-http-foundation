@@ -17,10 +17,12 @@ require __DIR__.'/vendor/autoload.php';
 function shellLikeExec($s)
 {
     $process = (new ProcessBuilder(explode(' ', $s)))->getProcess();
-    echo "run\n";
+    echo "run: ";
     echo $process->run();
+    echo PHP_EOL;
     echo "getErrorOutput\n";
     echo $process->getErrorOutput();
+    echo PHP_EOL;
     echo "getOutput\n";
     echo $process->getOutput();
     echo PHP_EOL;
