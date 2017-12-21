@@ -30,33 +30,14 @@ function shellLikeExec($s)
 }
 
 shellLikeExec('which composer');
-
-$process = (new ProcessBuilder(['composer', 'help', 'global']))->getProcess();
-echo "getCommandLine\n";
-echo $process->getCommandLine();
-echo "run\n";
-echo $process->run();
-echo "getErrorOutput\n";
-echo $process->getErrorOutput();
-echo "getOutput\n";
-echo $process->getOutput();
-echo PHP_EOL;
+shellLikeExec('composer help global');
 
 if (7 <= PHP_MAJOR_VERSION) {
-    $process = (new ProcessBuilder(['composer', 'global', 'require', '--dev', 'phpstan/phpstan-phpunit']))->getProcess();
-    echo $process->getCommandLine();
-    echo $process->run();
-    echo $process->getErrorOutput();
-    echo $process->getOutput();
+    shellLikeExec('composer global require --dev phpstan/phpstan-phpunit');
 } else {
-    $process = (new ProcessBuilder(['composer', 'global', 'require', '--dev', 'phpunit/phpunit']))->getProcess();
-    echo "getCommandLine\n";
-    echo $process->getCommandLine();
-    echo "run\n";
-    echo $process->run();
-    echo "getErrorOutput\n";
-    echo $process->getErrorOutput();
-    echo "getOutput\n";
-    echo $process->getOutput();
-    echo "\n";
+    shellLikeExec('composer global require --dev phpunit/phpunit');
 }
+
+// composer global is may be not always the best choice
+// https://secure.php.net/manual/en/reserved.constants.php
+// https://secure.php.net/manual/en/function.phpversion.php
