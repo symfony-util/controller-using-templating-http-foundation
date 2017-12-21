@@ -10,16 +10,26 @@
  */
 
 use Symfony\Component\Process\ProcessBuilder;
-
-echo __DIR__.'/vendor/autoload.php';
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 require __DIR__.'/vendor/autoload.php';
 
-$process = (new ProcessBuilder(explode(' ', 'which composer')))->getProcess();
-echo $process->getCommandLine();
-echo $process->run();
-echo $process->getErrorOutput();
-echo $process->getOutput();
+function shellLikeExec($s)
+{
+    $process = (new ProcessBuilder(explode(' ', $s)))->getProcess();
+    echo "run\n";
+    echo $process->run();
+    echo "getErrorOutput\n";
+    echo $process->getErrorOutput();
+    echo "getOutput\n";
+    echo $process->getOutput();
+    echo PHP_EOL;
+    if (!$process->isSuccessful()) {
+        throw new ProcessFailedException($process);
+    }
+}
+
+shellLikeExec('which composer');
 
 $process = (new ProcessBuilder(['composer', 'help', 'global']))->getProcess();
 echo "getCommandLine\n";
