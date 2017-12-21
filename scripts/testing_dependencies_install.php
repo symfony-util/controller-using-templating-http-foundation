@@ -29,13 +29,13 @@ if (7 <= PHP_MAJOR_VERSION) {
     echo $process->getOutput();
 } else {
     $process = (new ProcessBuilder(['composer', 'global require --dev phpunit/phpunit']))->getProcess();
-    echo "\n";
+    echo "getCommandLine\n";
     echo $process->getCommandLine();
-    echo "\n";
+    echo "run\n";
     echo $process->run();
-    echo "\n";
+    echo "getErrorOutput\n";
     echo $process->getErrorOutput();
-    echo "\n";
+    echo "getOutput\n";
     echo $process->getOutput();
     echo "\n";
 }
