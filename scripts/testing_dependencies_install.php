@@ -30,7 +30,7 @@ echo "getErrorOutput\n";
 echo $process->getErrorOutput();
 echo "getOutput\n";
 echo $process->getOutput();
-echo "\n";
+echo PHP_EOL;
 
 if (7 <= PHP_MAJOR_VERSION) {
     $process = (new ProcessBuilder(['composer', 'global', 'require', '--dev', 'phpstan/phpstan-phpunit']))->getProcess();
