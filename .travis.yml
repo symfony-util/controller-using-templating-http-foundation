@@ -68,6 +68,7 @@ before_install:
 - composer global require --dev "symfony/process:>=2.3"
 - ls -a --color ~
 - ls -a --color ~/.composer
+- ls -a --color ~/.composer/vendor
 - php scripts/testing_dependencies_install.php
 - ls --color $HOME/.composer/vendor/bin
 # PHP 5.6
