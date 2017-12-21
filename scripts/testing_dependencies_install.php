@@ -31,9 +31,6 @@ function shellLikeExec($s)
     }
 }
 
-shellLikeExec('which composer');
-shellLikeExec('composer help global');
-
 if (7 <= PHP_MAJOR_VERSION) {
     shellLikeExec('composer global require --dev phpstan/phpstan-phpunit');
 } else {
