@@ -33,13 +33,13 @@ echo $process->getOutput();
 echo "\n";
 
 if (7 <= PHP_MAJOR_VERSION) {
-    $process = (new ProcessBuilder(['composer', 'global require --dev phpstan/phpstan-phpunit']))->getProcess();
+    $process = (new ProcessBuilder(['composer', 'global', 'require', '--dev', 'phpstan/phpstan-phpunit']))->getProcess();
     echo $process->getCommandLine();
     echo $process->run();
     echo $process->getErrorOutput();
     echo $process->getOutput();
 } else {
-    $process = (new ProcessBuilder(['composer', 'global require --dev phpunit/phpunit']))->getProcess();
+    $process = (new ProcessBuilder(['composer', 'global', 'require', '--dev', 'phpunit/phpunit']))->getProcess();
     echo "getCommandLine\n";
     echo $process->getCommandLine();
     echo "run\n";
