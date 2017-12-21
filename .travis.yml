@@ -65,7 +65,7 @@ before_install:
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
 # PHP 7.0+ (and -)
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; else composer global require --dev phpunit/phpunit;fi
-- pushd scripts ; composer require --dev "symfony/process:>=2.3" ; popd
+- composer --working-dir scripts require --dev "symfony/process:>=2.3"
 - ls -a --color ~
 - ls -a --color ~/.composer
 - ls -a --color ~/.composer/vendor
