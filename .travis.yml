@@ -68,7 +68,7 @@ before_install:
 - composer --working-dir=scripts require --dev "symfony/process:>=2.3"
 - ls -a --color ~
 - ls -a --color ~/.composer
-- ls -a --color ~/.composer/vendor
+# - ls -a --color ~/.composer/vendor
 - ls -a --color scripts
 - ls -a --color scripts/vendor
 - php scripts/testing_dependencies_install.php
