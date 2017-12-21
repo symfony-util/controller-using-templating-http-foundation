@@ -11,11 +11,8 @@
 
 use Symfony\Component\Process\ProcessBuilder;
 
-if (7 <= PHP_MAJOR_VERSION)
-{
-(new ProcessBuilder(['composer', 'global require --dev phpstan/phpstan-phpunit']))->getProcess()->run();
-}
-else
-{
-(new ProcessBuilder(['composer', 'global require --dev phpunit/phpunit']))->getProcess()->run();
+if (7 <= PHP_MAJOR_VERSION) {
+    (new ProcessBuilder(['composer', 'global require --dev phpstan/phpstan-phpunit']))->getProcess()->run();
+} else {
+    (new ProcessBuilder(['composer', 'global require --dev phpunit/phpunit']))->getProcess()->run();
 }
