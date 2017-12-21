@@ -11,6 +11,8 @@
 
 use Symfony\Component\Process\ProcessBuilder;
 
+echo __DIR__ . '/vendor/autoload.php';
+
 require __DIR__ . '/vendor/autoload.php';
 
 $process = (new ProcessBuilder(['which', 'composer']))->getProcess();
