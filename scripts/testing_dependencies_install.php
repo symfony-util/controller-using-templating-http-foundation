@@ -21,7 +21,7 @@ echo $process->run();
 echo $process->getErrorOutput();
 echo $process->getOutput();
 
-$process = (new ProcessBuilder(['composer', 'help global']))->getProcess();
+$process = (new ProcessBuilder(['composer', 'help', 'global']))->getProcess();
 echo "getCommandLine\n";
 echo $process->getCommandLine();
 echo "run\n";
