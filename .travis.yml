@@ -64,7 +64,8 @@ before_install:
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
 # PHP 7.0+ (and -)
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; else composer global require --dev phpunit/phpunit;fi
+# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; else composer global require --dev phpunit/phpunit;fi
+- php scripts/testing_dependencies_install.php
 - ls --color $HOME/.composer/vendor/bin
 # PHP 5.6
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
@@ -97,7 +98,7 @@ script:
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
 
 # PHPStan - PHP Static Analysis Tool
-- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse --level max *.php tests; fi
+- if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse --level max *.php tests scripts; fi
 
 # PHPUnit
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then PHPUNIT_COVERAGE="--coverage-text --coverage-clover /tmp/coverage.xml"; fi
