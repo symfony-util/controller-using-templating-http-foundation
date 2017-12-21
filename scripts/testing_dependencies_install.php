@@ -11,7 +11,7 @@
 
 use Symfony\Component\Process\ProcessBuilder;
 
-require '~/.composer/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 if (7 <= PHP_MAJOR_VERSION) {
     (new ProcessBuilder(['composer', 'global require --dev phpstan/phpstan-phpunit']))->getProcess()->run();
