@@ -72,7 +72,7 @@ before_install:
 - ls -a --color scripts
 - ls -a --color scripts/vendor
 - php scripts/testing_dependencies_install.php
-- ls --color scripts/vendor/bin
+- ls -a --color scripts/vendor
 - ls -a --color ~/.composer
 # PHP 5.6
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
