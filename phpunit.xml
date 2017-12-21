@@ -16,6 +16,9 @@
             <exclude>
                 <directory suffix=".php">tests</directory>
             </exclude>
+            <exclude>
+                <directory suffix=".php">scripts</directory>
+            </exclude>
         </whitelist>
     </filter>
 
