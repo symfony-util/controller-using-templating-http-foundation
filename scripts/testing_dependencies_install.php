@@ -9,19 +9,17 @@
  * file that was distributed with this source code.
  */
 
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\ProcessBuilder;
 
 require __DIR__.'/vendor/autoload.php';
 
 function shellLikeExec($s)
 {
-    $process = (new ProcessBuilder(explode(' ', $s)))->getProcess()->disableOutput()->mustRun(function ($type, $buffer) {
+    $process = (new Process(explode(' ', $s)))->disableOutput()->mustRun(function ($type, $buffer) {
         if (Process::ERR === $type) {
             fwrite(STDERR, $buffer);
         } else {
-            echo 'OUT > '.$buffer;
+            fwrite(STDOUT, $buffer);
         }
     });
 }
