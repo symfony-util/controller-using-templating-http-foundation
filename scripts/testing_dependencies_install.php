@@ -15,7 +15,7 @@ require __DIR__.'/vendor/autoload.php';
 
 function shellLikeExec($s)
 {
-    // (new Process(explode(' ', $s)))->mustRun(function ($type, $buffer) {
+    // (new Process(explode(' ', $s)))->mustRun(function ($type, $buffer) { // This may be required for Symfony 4!
     (new Process($s))->mustRun(function ($type, $buffer) {
         if (Process::ERR === $type) {
             fwrite(STDERR, $buffer);
