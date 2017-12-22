@@ -13,7 +13,8 @@ use Symfony\Component\Process\Process;
 
 require __DIR__.'/vendor/autoload.php';
 
-function callback($type, $buffer) {
+function callback($type, $buffer)
+{
     if (Process::ERR === $type) {
         fwrite(STDERR, $buffer);
     } else {
