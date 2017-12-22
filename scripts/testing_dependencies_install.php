@@ -13,7 +13,7 @@ use Symfony\Component\Process\Process;
 
 require __DIR__.'/vendor/autoload.php';
 
-function callback($type, $buffer)
+function stdCallback($type, $buffer)
 {
     if (Process::ERR === $type) {
         fwrite(STDERR, $buffer);
@@ -24,8 +24,8 @@ function callback($type, $buffer)
 
 function shellLikeExec($s)
 {
-    // (new Process(explode(' ', $s)))->mustRun(callback); // This may be required for Symfony 4!
-    (new Process($s))->mustRun(callback);
+    // (new Process(explode(' ', $s)))->mustRun(stdCallback); // This may be required for Symfony 4!
+    (new Process($s))->mustRun(stdCallback);
 }
 
 if (7 <= PHP_MAJOR_VERSION) {
