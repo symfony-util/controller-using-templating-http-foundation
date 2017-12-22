@@ -16,17 +16,13 @@ require __DIR__.'/vendor/autoload.php';
 
 function shellLikeExec($s)
 {
-    $process = (new ProcessBuilder(explode(' ', $s)))->getProcess();
-    $process->mustRun();
-    echo "getErrorOutput\n";
-    fwrite(STDERR, $process->getErrorOutput());
-    echo PHP_EOL;
-    echo "getOutput\n";
-    fwrite(STDOUT, $process->getOutput());
-    echo PHP_EOL;
-    // if (!$process->isSuccessful()) {
-    //     throw new ProcessFailedException($process);
-    // }
+    $process = (new ProcessBuilder(explode(' ', $s)))->getProcess()->disableOutput()->mustRun(function ($type, $buffer) {
+        if (Process::ERR === $type) {
+            fwrite(STDERR, $buffer);
+        } else {
+            echo 'OUT > '.$buffer;
+        }
+    });
 }
 
 if (7 <= PHP_MAJOR_VERSION) {
