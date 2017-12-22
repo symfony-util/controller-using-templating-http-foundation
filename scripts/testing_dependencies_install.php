@@ -18,17 +18,17 @@ function shellLikeExec($s)
 {
     $process = (new ProcessBuilder(explode(' ', $s)))->getProcess();
     echo 'run: ';
-    echo $process->run();
+    echo $process->mustRun();
     echo PHP_EOL;
     echo "getErrorOutput\n";
-    echo $process->getErrorOutput();
+    fwrite(STDERR, $process->getErrorOutput());
     echo PHP_EOL;
     echo "getOutput\n";
-    echo $process->getOutput();
+    fwrite(STDOUT, $process->getOutput());
     echo PHP_EOL;
-    if (!$process->isSuccessful()) {
-        throw new ProcessFailedException($process);
-    }
+    // if (!$process->isSuccessful()) {
+    //     throw new ProcessFailedException($process);
+    // }
 }
 
 if (7 <= PHP_MAJOR_VERSION) {
