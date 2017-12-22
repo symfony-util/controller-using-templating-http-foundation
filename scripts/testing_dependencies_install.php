@@ -10,6 +10,7 @@
  */
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
 require __DIR__.'/vendor/autoload.php';
