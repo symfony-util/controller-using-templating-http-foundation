@@ -15,7 +15,7 @@ require __DIR__.'/vendor/autoload.php';
 
 function shellLikeExec($s)
 {
-    $process = (new Process(explode(' ', $s)))->disableOutput()->mustRun(function ($type, $buffer) {
+    (new Process(explode(' ', $s)))->mustRun(function ($type, $buffer) {
         if (Process::ERR === $type) {
             fwrite(STDERR, $buffer);
         } else {
