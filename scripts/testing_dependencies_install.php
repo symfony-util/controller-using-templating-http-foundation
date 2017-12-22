@@ -13,6 +13,14 @@ use Symfony\Component\Process\Process;
 
 require __DIR__.'/vendor/autoload.php';
 
+function callback($type, $buffer) {
+    if (Process::ERR === $type) {
+        fwrite(STDERR, $buffer);
+    } else {
+        fwrite(STDOUT, $buffer);
+    }
+}
+
 function shellLikeExec($s)
 {
     // (new Process(explode(' ', $s)))->mustRun(function ($type, $buffer) { // This may be required for Symfony 4!
