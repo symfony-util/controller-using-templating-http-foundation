@@ -98,7 +98,7 @@ before_script:
 
 script:
 #  php -l main php code
-- for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
+- for f in $(find . -path './vendor' -prune -o -path './scripts/vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
 
 # php -l test php code
 - if true; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
