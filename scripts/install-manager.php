@@ -19,5 +19,6 @@ require __DIR__.'/vendor/autoload.php';
 
 $application = new Application();
 $application->add(new InstallPhpstanPhpUnitCommand());
+$application->add(new FailSafeCommand());
 $application->add(new RunCommand());
 $application->run();
