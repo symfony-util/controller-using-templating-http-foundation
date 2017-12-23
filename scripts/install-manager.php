@@ -1,3 +1,4 @@
+<?php
 // use Acme\Console\Command\HelloWorldCommand;
 use Symfony\Component\Console\Application;
 
