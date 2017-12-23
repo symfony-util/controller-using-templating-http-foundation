@@ -75,7 +75,7 @@ before_install:
 # - php scripts/testing_dependencies_install.php
 - php scripts/install-manager.php --ansi
 # - php scripts/install-manager.php -vvv --ansi install:phpstan-phpunit
-- php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpstan/phpstan-phpunit
+- php scripts/install-manager.php -vvv --ansi -- failsafe composer global require --dev phpstan/phpstan-phpunit
 - php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpunit/phpunit
 - ls -a --color scripts/vendor
 - ls -a --color ~/.composer
