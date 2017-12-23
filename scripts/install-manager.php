@@ -13,8 +13,10 @@ use Symfony\Component\Console\Application;
 
 require __DIR__.'/vendor/autoload.php';
 
-$command = new InstallPhpstanPhpUnitCommand();
+// $command = new InstallPhpstanPhpUnitCommand();
+// $application->add($command);
+// $application->setDefaultCommand($command->getName());
+
 $application = new Application();
-$application->add($command);
-$application->setDefaultCommand($command->getName());
+$application->add(new InstallPhpstanPhpUnitCommand());
 $application->run();
