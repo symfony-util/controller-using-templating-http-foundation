@@ -30,6 +30,6 @@ class RunCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
-        $helper->run($output, $input->getArgument('commandline'));
+        return $helper->run($output, $input->getArgument('commandline'))->getExitCode();
     }
 }
