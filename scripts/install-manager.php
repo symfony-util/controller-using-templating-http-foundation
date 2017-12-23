@@ -1,5 +1,5 @@
 <?php
-// use Acme\Console\Command\HelloWorldCommand;
+
 use Symfony\Component\Console\Application;
 
 require __DIR__.'/vendor/autoload.php';
