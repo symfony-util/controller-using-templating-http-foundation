@@ -1,0 +1,24 @@
+{
+    "name": "symfony-util/controller-using-templating-http-foundation/scripts",
+    "description": "Scripts for controller which renders a template and returns a response (HttpFoundation)",
+    "keywords": ["controller", "symfony", "snowyowl"],
+    "homepage": "https://github.com/symfony-util/controller-using-templating-http-foundation",
+    "license": "ISC",
+    "authors": [
+        {"name": "Jean-bernard Addor"},
+        {"name": "Community", "homepage": "https://github.com/symfony-util/controller-using-templating-http-foundation"}
+    ],
+    "require-dev": {
+        "symfony/process": ">=2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "": ["script/",]
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.3.x-dev"
+        }
+    }
+}
