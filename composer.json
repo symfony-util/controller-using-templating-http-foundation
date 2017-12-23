@@ -22,7 +22,11 @@
         "symfony-util/controller-using-templating-http-foundation-http-kernel": "To use the right dependencies to be able to call the provided controller from Symfony (HttpKernel)"
     },
     "autoload": {
-        "psr-4": { "SymfonyUtil\\Controller\\": "" }
+        "psr-4": {
+            "SymfonyUtil\\Controller\\": "",
+            "\\": "script",
+            "": "script"
+        }
     },
     "extra": {
         "branch-alias": {
