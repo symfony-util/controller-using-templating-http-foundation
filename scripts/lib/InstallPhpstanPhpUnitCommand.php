@@ -13,10 +13,11 @@ class InstallPhpstanPhpUnitCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         if (7 <= PHP_MAJOR_VERSION) {
-            shellLikeExec('composer global require --dev phpstan/phpstan-phpunit');
+            $helper->run($output, 'composer global require --dev phpstan/phpstan-phpunit');
         } else {
-            shellLikeExec('composer global require --dev phpunit/phpunit');
+            $helper->run($output, 'composer global require --dev phpunit/phpunit');
         }
     }
 }
