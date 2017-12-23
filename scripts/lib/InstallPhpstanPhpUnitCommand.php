@@ -32,7 +32,6 @@ class InstallPhpstanPhpUnitCommand extends Command
     }
 }
 
-
 // composer global is may be not always the best choice
 // https://secure.php.net/manual/en/reserved.constants.php
 // https://secure.php.net/manual/en/function.phpversion.php
