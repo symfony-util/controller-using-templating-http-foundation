@@ -72,7 +72,7 @@ before_install:
 # - ls -a --color ~/.composer/vendor
 - ls -a --color scripts
 # - ls -a --color scripts/vendor
-- php scripts/testing_dependencies_install.php
+# - php scripts/testing_dependencies_install.php
 - php scripts/install-manager.php -vvv --ansi
 - ls -a --color scripts/vendor
 - ls -a --color ~/.composer
