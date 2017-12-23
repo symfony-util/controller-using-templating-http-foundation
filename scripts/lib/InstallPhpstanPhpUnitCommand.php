@@ -25,9 +25,9 @@ class InstallPhpstanPhpUnitCommand extends Command
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         if (7 <= PHP_MAJOR_VERSION) {
-            $helper->run($output, 'composer global require --dev phpstan/phpstan-phpunit');
+            echo $helper->run($output, 'composer global require --dev phpstan/phpstan-phpunit')->getExitCode();
         } else {
-            $helper->run($output, 'composer global require --dev phpunit/phpunit');
+            echo $helper->run($output, 'composer global require --dev phpunit/phpunit')->getExitCode();
         }
     }
 }
