@@ -93,9 +93,12 @@ script:
 - failsafe php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no # checks nothing
 
 # PHPStan - PHP Static Analysis Tool
-- failsafe ~/.composer/vendor/bin/phpstan
+- failsafe ~/.composer/vendor/bin/phpstan --version
+- failsafe ~/.composer/vendor/bin/phpstan help analyse
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
 - failsafe $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse -vv --level max *.php tests
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse -vvv --level max *.php tests
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
 # PHPUnit
