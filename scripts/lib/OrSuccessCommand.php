@@ -39,8 +39,12 @@ class OrSuccessCommand extends Command
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         // This introduces a hidden dependecy on symfony/process!
         $process = $helper->run($output, $input->getArgument('commandline'));
-        if ($process->isSuccessful()) return;
-        if ($process->getExitCode() === intval($input->getArgument('failsafecommandexitcode'))) return;
+        if ($process->isSuccessful()) {
+            return;
+        }
+        if ($process->getExitCode() === intval($input->getArgument('failsafecommandexitcode'))) {
+            return;
+        }
         return $process->getExitCode();
     }
 }
