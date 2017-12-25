@@ -49,7 +49,7 @@ before_install:
 
 # - composer --working-dir=scripts require --dev "symfony/process:>=2.3" # "symfony/lts"
 - composer --working-dir=scripts update
-- alias ps='php scripts/install-manager.php --ansi'
+- alias sp='php scripts/install-manager.php --ansi'
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
