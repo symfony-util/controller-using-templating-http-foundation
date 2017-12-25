@@ -98,7 +98,7 @@ script:
 
 # PHPStan - PHP Static Analysis Tool
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
-- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --debug --level max *.php tests scripts/*.php
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --debug --level max *.php tests scripts/*.php scripts/lib
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
 # PHPUnit
