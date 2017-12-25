@@ -96,9 +96,9 @@ script:
 - failsafe ~/.composer/vendor/bin/phpstan --version
 - failsafe ~/.composer/vendor/bin/phpstan help analyse
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
-- failsafe $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests
-- failsafe $HOME/.composer/vendor/bin/phpstan analyse -vv --level max *.php tests
-- failsafe $HOME/.composer/vendor/bin/phpstan analyse -vvv --level max *.php tests
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --no-progress --level max *.php tests
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --debug --level max *.php tests
+- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --no-progress --debug  --level max *.php tests
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
 # PHPUnit
