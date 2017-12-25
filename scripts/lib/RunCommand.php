@@ -13,6 +13,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+// Symfony\Component\Process hidden dependecy
 
 class RunCommand extends Command
 {
@@ -30,6 +31,7 @@ class RunCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
+        // This introduces a hidden dependecy on symfony/process!
         return $helper->run($output, $input->getArgument('commandline'))->getExitCode();
     }
 }
