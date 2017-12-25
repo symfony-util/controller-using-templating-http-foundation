@@ -8,10 +8,8 @@ install:
 - cinst php
 - php.exe --ini
 - echo extension_dir = "ext" >> C:\Tools\php72\php.ini
+- echo extension=mbstring >> C:\Tools\php72\php.ini
 - echo extension=openssl >> C:\Tools\php72\php.ini
-# - echo extension_dir = "ext" >> php.ini
-# - echo extension=openssl >> php.ini
-# - php.exe --ini -c php.ini 
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
 # appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
@@ -22,5 +20,8 @@ install:
 # - echo @php %%~dp0composer.phar %%* > composer.bat
 - php.exe composer.phar
 # - composer
-- php.exe composer.phar --working-dir=scripts update # --disable-tls=true
-# - php.exe -c php.ini composer.phar --working-dir=scripts update # --disable-tls=true
+- php.exe composer.phar --working-dir=scripts update
+- php.exe composer.phar require --dev phpstan/phpstan-phpunit
+build: off
+test_script:
+- vendor/bin/phpunit
