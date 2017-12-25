@@ -1,2 +1,3 @@
 install: 
-  - cinst php
+- cinst php
+- appveyor DownloadFile https://getcomposer.org/composer.phar
