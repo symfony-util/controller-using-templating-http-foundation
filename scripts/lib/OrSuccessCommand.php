@@ -23,6 +23,11 @@ class OrSuccessCommand extends Command
         $this->setName('run')
             ->setDescription('Command line run from Process')
             ->addArgument(
+                'failsafecommandexitcode',
+                InputArgument::REQUIRED,
+                'Failsafe Command Exit Code'
+            );
+            ->addArgument(
                 'commandline',
                 InputArgument::IS_ARRAY | InputArgument::REQUIRED,
                 'The command line'
@@ -33,6 +38,9 @@ class OrSuccessCommand extends Command
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         // This introduces a hidden dependecy on symfony/process!
-        return $helper->run($output, $input->getArgument('commandline'))->getExitCode();
+        $process = $helper->run($output, $input->getArgument('commandline'));
+        if ($process->isSuccessful()) return;
+        if ($process->getExitCode() === intval($input->getArgument('failsafecommandexitcode'))) return;
+        return $process->getExitCode();
     }
 }
