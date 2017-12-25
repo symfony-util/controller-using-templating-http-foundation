@@ -5,8 +5,9 @@ init:
 - SET ANSICON=121x90 (121x90)
 install: 
 - cinst php
+- dir c:\tools\php
 - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 - echo @php %%~dp0composer.phar %%* > composer.bat
-- composer.phar
+- php.exe composer.phar
 - composer
 - composer.phar --working-dir=scripts update
