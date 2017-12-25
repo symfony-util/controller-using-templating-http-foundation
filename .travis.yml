@@ -116,7 +116,8 @@ script:
 - if true; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
 
 # php-cs-fixer
-- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
+- failsafe php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no
 
 # PHPStan - PHP Static Analysis Tool
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse --level max *.php tests; fi
