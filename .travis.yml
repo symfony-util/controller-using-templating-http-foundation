@@ -71,8 +71,7 @@ before_install:
 - php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpunit/phpunit
 
 - failsafe phpstan --version
-- failsafe ~/.composer/vendor/bin/phpstan --version
-- failsafe ~/.composer/vendor/bin/phpstan help analyse
+- failsafe phpstan help analyse
 
 
 # SensioLabs Security Checker
@@ -99,7 +98,7 @@ script:
 
 # PHPStan - PHP Static Analysis Tool
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
-- failsafe $HOME/.composer/vendor/bin/phpstan analyse --ansi --debug --level max *.php tests scripts/*.php scripts/lib
+- failsafe phpstan analyse --ansi --debug --level max *.php tests scripts/*.php --autoload-file=scripts/vendor/autoload.php scripts/lib
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
 # PHPUnit
