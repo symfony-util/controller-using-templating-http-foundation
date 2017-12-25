@@ -2,4 +2,4 @@ install:
 - cinst php
 - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 - composer.phar
-- php.exe composer.phar --working-dir=scripts update
+- composer.phar --working-dir=scripts update
