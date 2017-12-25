@@ -57,7 +57,7 @@ before_install:
 - alias failsafe='php scripts/install-manager.php --ansi -vvv -- failsafe'
 
 # php-cs-fixer
-- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=~/bin/php-cs-fixer; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=$HOME/bin/php-cs-fixer; fi
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
 - failsafe chmod u+x .travis/bin/php-cs-fixer
 - failsafe .travis/bin/php-cs-fixer --version
