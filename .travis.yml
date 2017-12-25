@@ -56,6 +56,9 @@ before_install:
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
+- ls -l .travis/bin/php-cs-fixer
+- chmod u+x .travis/bin/php-cs-fixer
+- ls -l .travis/bin/php-cs-fixer
 - sp failsafe .travis/bin/php-cs-fixer --version
 - failsafe php .travis/bin/php-cs-fixer --version
 
