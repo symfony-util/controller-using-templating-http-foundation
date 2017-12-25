@@ -26,6 +26,7 @@ matrix:
     - SYMFONY_LTS="3"
 
 before_install:
+- shopt -s expand_aliases
 - pwd
 - echo $HOME
 - ls --color $HOME
