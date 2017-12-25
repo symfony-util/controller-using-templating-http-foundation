@@ -94,11 +94,11 @@ script:
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
-- failsafe php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no # checks nothing
+- orsuccess 127 php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no
 
 # PHPStan - PHP Static Analysis Tool
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
-- failsafe phpstan analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts/*.php scripts/lib
+- orsuccess 127 phpstan analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts/*.php scripts/lib
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
 # PHPUnit
