@@ -26,7 +26,7 @@ class OrSuccessCommand extends Command
                 'failsafecommandexitcode',
                 InputArgument::REQUIRED,
                 'Failsafe Command Exit Code'
-            );
+            )
             ->addArgument(
                 'commandline',
                 InputArgument::IS_ARRAY | InputArgument::REQUIRED,
