@@ -1,14 +1,14 @@
 init:
-- SET PATH=C:\Program Files\OpenSSL;c:\tools\php;C:\tools\php72;%PATH%
+# - SET PATH=C:\Program Files\OpenSSL;c:\tools\php;C:\tools\php72;%PATH%
 - SET COMPOSER_NO_INTERACTION=1
 - SET PHP=1 # This var is connected to PHP install cache
 - SET ANSICON=121x90 (121x90)
 install: 
-- cinst php
+- cinst php ; refreshenv
 - dir c:
 # \tools\php
 - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
-- echo @php %%~dp0composer.phar %%* > composer.bat
+# - echo @php %%~dp0composer.phar %%* > composer.bat
 - php.exe composer.phar
-- composer
-- composer.phar --working-dir=scripts update
+# - composer
+- php.exe composer.phar --working-dir=scripts update
