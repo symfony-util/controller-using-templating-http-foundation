@@ -7,7 +7,7 @@ init:
 install: 
 - cinst php
 - php.exe --ini
-- echo extension_dir = "C:\Tools\php72\ext" >> php.ini
+- echo extension_dir = "C:\Tools\php72\ext" >> C:\Tools\php72\php.ini
 - echo extension=openssl >> C:\Tools\php72\php.ini
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
