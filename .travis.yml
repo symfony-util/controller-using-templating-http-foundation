@@ -48,7 +48,7 @@ before_install:
 - ls --color $HOME/bin
 - ls --color ~/bin
 - echo $PATH
-- export PATH=$PATH:~/bin
+- export PATH=~/bin:~/.composer/vendor/bin:$PATH
 - echo $PATH
 
 # shell process
@@ -70,6 +70,7 @@ before_install:
 - php scripts/install-manager.php -vvv --ansi -- failsafe composer global require --dev phpstan/phpstan-phpunit
 - php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpunit/phpunit
 
+- failsafe phpstan --version
 - failsafe ~/.composer/vendor/bin/phpstan --version
 - failsafe ~/.composer/vendor/bin/phpstan help analyse
 
