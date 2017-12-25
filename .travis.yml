@@ -51,10 +51,11 @@ before_install:
 - export PATH=$PATH:~/bin
 - echo $PATH
 
-# - composer --working-dir=scripts require --dev "symfony/process:>=2.3" # "symfony/lts"
+# shell process
 - composer --working-dir=scripts update
 - alias sp='php scripts/install-manager.php --ansi -vvv --'
 - alias failsafe='php scripts/install-manager.php --ansi -vvv -- failsafe'
+- sp
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=$HOME/bin/php-cs-fixer; fi
@@ -63,47 +64,19 @@ before_install:
 - failsafe php-cs-fixer --version
 
 # PHPStan - PHP Static Analysis Tool
-# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://github.com/phpstan/phpstan/releases/download/0.9.1/phpstan.phar --output-document=$HOME/bin/phpstan; fi
-#^ Needs frequent updates! -> Now with PHPUnit
-# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-shim; fi
-# - ls --color ~/.composer
-# https://packagist.org/packages/phpstan/phpstan See Install
 # https://github.com/symfony/symfony/issues/25459
 
-# PHPUnit (+ PHPStan)
-# - if [[ "7.0" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-7.0.phar --output-document=$HOME/bin/phpunit; fi # Initial release: February 2, 2018
-# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.1" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
-# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-6.5.phar --output-document=$HOME/bin/phpunit; fi
-# PHP 7.0+ (and -)
-# - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev phpstan/phpstan-phpunit; else composer global require --dev phpunit/phpunit;fi
-- ls -a --color ~
-- ls -a --color ~/.composer
-# - ls -a --color ~/.composer/vendor
-- ls -a --color scripts
-# - ls -a --color scripts/vendor
-# - php scripts/testing_dependencies_install.php
-- php scripts/install-manager.php --ansi
-# - php scripts/install-manager.php -vvv --ansi install:phpstan-phpunit
+# PHPUnit (+ PHPStan for PHP 5.6+)
 - php scripts/install-manager.php -vvv --ansi -- failsafe composer global require --dev phpstan/phpstan-phpunit
 - php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpunit/phpunit
-- ls -a --color scripts/vendor
-- ls -a --color ~/.composer
-# PHP 5.6
-# - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]] && [[ "7.0" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=$HOME/bin/phpunit; fi
-# PHP <= 5.5
-# - if [[ "5.6" > "$TRAVIS_PHP_VERSION" ]]; then wget https://phar.phpunit.de/phpunit-4.8.phar --output-document=$HOME/bin/phpunit; fi
-#^ Considere elif in separate shell file
 
 # SensioLabs Security Checker
 - if [[ "5.4" < "$TRAVIS_PHP_VERSION" ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
 install:
-- composer validate
-- if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
+- failsafe cp config/parameters.yml.travis config/parameters.yml
 - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest --optimize-autoloader --apcu-autoloader; fi
 - if [[ -v SYMFONY_LTS ]]; then composer require symfony/lts:${SYMFONY_LTS} --no-scripts --no-progress --no-suggest --optimize-autoloader --apcu-autoloader; fi
-# - composer install --no-scripts --no-progress --no-suggest
-# - composer install --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
 - composer show
 
 before_script:
@@ -117,9 +90,10 @@ script:
 
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no; fi
-- failsafe php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no
+- failsafe php-cs-fixer fix --stop-on-violation --diff --dry-run -vvv --using-cache=no # checks nothing
 
 # PHPStan - PHP Static Analysis Tool
+- failsafe ~/.composer/vendor/bin/phpstan
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse --level max *.php tests; fi
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse --level max *.php; popd; fi # Insensitive to errors!!!
 
