@@ -59,8 +59,9 @@ before_install:
 # php-cs-fixer
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=$HOME/bin/php-cs-fixer; fi
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
-- failsafe chmod u+x .travis/bin/php-cs-fixer
-- failsafe .travis/bin/php-cs-fixer --version
+- failsafe chmod u+x ~/bin/php-cs-fixer
+- failsafe ~/bin/php-cs-fixer --version
+- failsafe php-cs-fixer --version
 
 # PHPStan - PHP Static Analysis Tool
 # - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then wget https://github.com/phpstan/phpstan/releases/download/0.9.1/phpstan.phar --output-document=$HOME/bin/phpstan; fi
