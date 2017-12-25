@@ -1,4 +1,5 @@
 install: 
 - cinst php
 - appveyor DownloadFile https://getcomposer.org/composer.phar
-- php composer.phar
+- php72 composer.phar
+- php72 composer.phar --working-dir=scripts update
