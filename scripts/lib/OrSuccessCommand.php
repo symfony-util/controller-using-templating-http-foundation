@@ -20,7 +20,7 @@ class OrSuccessCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('run')
+        $this->setName('orsuccess')
             ->setDescription('Command line run from Process')
             ->addArgument(
                 'failsafecommandexitcode',
