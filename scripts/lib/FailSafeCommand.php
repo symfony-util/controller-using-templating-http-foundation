@@ -30,6 +30,7 @@ class FailSafeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
+        // This introduces a hidden dependecy on symfony/process!
         $helper->run($output, $input->getArgument('commandline'));
     }
 }
