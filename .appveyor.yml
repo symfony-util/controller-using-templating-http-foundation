@@ -19,4 +19,4 @@ install:
 # - echo @php %%~dp0composer.phar %%* > composer.bat
 - php.exe composer.phar
 # - composer
-- php.exe -c php.ini composer.phar --working-dir=scripts update
+- php.exe -c php.ini composer.phar --working-dir=scripts update --disable-tls=true
