@@ -7,12 +7,14 @@ init:
 install: 
 - cinst php
 - php.exe --ini
-- echo extension=php_openssl.dll >> php.ini
+# - echo extension_dir = "ext" >> php.ini
+- echo extension=openssl >> C:\Tools\php72\php.ini
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
 # appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 # 'appveyor-retry' is not recognized as an internal or external command, operable program or batch file.
-- dir c:\Tools\php72
+- dir C:\Tools\php72
+- dir C:\Tools\php72\ext
 - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 # - echo @php %%~dp0composer.phar %%* > composer.bat
 - php.exe composer.phar
