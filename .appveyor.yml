@@ -6,11 +6,12 @@ init:
 - SET ANSICON=121x90 (121x90)
 install: 
 - cinst php
+- echo extension=php_openssl.dll >> php.ini
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
 # appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 # 'appveyor-retry' is not recognized as an internal or external command, operable program or batch file.
-- dir c:\
+- dir c:\Tools
 # tools\php
 - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 # - echo @php %%~dp0composer.phar %%* > composer.bat
