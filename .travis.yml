@@ -55,6 +55,8 @@ before_install:
 - composer --working-dir=scripts update
 - alias sp='php scripts/install-manager.php --ansi -vvv --'
 - alias failsafe='php scripts/install-manager.php --ansi -vvv -- failsafe'
+- alias orsuccess='php scripts/install-manager.php --ansi -vvv -- orsuccess'
+- alias run='php scripts/install-manager.php --ansi -vvv -- run'
 - sp
 
 # php-cs-fixer
