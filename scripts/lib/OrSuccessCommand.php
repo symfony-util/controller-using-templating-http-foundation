@@ -42,9 +42,10 @@ class OrSuccessCommand extends Command
         if ($process->isSuccessful()) {
             return;
         }
-        if ($process->getExitCode() === intval($input->getArgument('failsafecommandexitcode'))) {
+        if ($process->getExitCode() === (int) ($input->getArgument('failsafecommandexitcode'))) {
             return;
         }
+
         return $process->getExitCode();
     }
 }
