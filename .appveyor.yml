@@ -1,22 +1,25 @@
 init:
-- SET PATH=C:\Program Files\OpenSSL;C:\Tools\php72;%PATH%
-# c:\tools\php;
+- SET PATH=C:\Program Files\OpenSSL;C:\Tools\php;%PATH%
 - SET COMPOSER_NO_INTERACTION=1
-- SET PHP=1 # This var is connected to PHP install cache
+# - SET PHP=1 # This var is connected to PHP install cache
 - SET ANSICON=121x90 (121x90)
 install: 
-- cinst php
+- cinst --params '""/InstallDir:C:\Tools\php""' php
 - php.exe --ini
-- echo extension_dir = "ext" >> C:\Tools\php72\php.ini
-- echo extension=mbstring >> C:\Tools\php72\php.ini
-- echo extension=openssl >> C:\Tools\php72\php.ini
+- echo extension_dir = "ext" >> C:\Tools\php\php.ini
+- echo extension=mbstring >> C:\Tools\php\php.ini
+- echo extension=openssl >> C:\Tools\php\php.ini
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
 # appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
 # 'appveyor-retry' is not recognized as an internal or external command, operable program or batch file.
-- dir C:\Tools\php72
-- dir C:\Tools\php72\ext
-- appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+- dir C:\Tools\php
+- dir C:\Tools\php\ext
+# - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+- php.exe -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+- php.exe -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+- php.exe composer-setup.php
+- php.exe -r "unlink('composer-setup.php');"
 # - echo @php %%~dp0composer.phar %%* > composer.bat
 - php.exe composer.phar
 # - composer
