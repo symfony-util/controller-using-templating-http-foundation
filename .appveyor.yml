@@ -34,6 +34,7 @@ install:
 - php.exe scripts/install-manager.php -vvv --ansi -- run php.exe composer.phar global require --dev phpstan/phpstan-phpunit
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - dir
+- dir *.php
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
 - dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer" # Directory of C:\Users\appveyor\AppData\Roaming\Composer
 - dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin"
