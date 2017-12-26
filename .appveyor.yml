@@ -49,7 +49,7 @@ install:
 - dir *.php
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
 - dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer" # Directory of C:\Users\appveyor\AppData\Roaming\Composer
-- dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin"
+# - dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin"
 - php.exe composer.phar update
 build: off
 test_script:
