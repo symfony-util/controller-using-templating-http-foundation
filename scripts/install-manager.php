@@ -18,8 +18,11 @@ require __DIR__.'/vendor/autoload.php';
 // $application->setDefaultCommand($command->getName());
 
 $application = new Application();
+
 $application->add(new InstallPhpstanPhpUnitCommand());
 $application->add(new FailSafeCommand());
 $application->add(new RunCommand());
 $application->add(new OrSuccessCommand());
+$application->add(new PathFinderEchoCommand());
+
 $application->run();
