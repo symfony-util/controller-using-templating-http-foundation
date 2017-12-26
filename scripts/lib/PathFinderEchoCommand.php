@@ -35,8 +35,9 @@ class PathFinderEchoCommand extends Command
         $finder = new Finder();
         $finder->files()->in(getcwd())->path($input->getArgument('path'));
 
-        $finder->rewind();
-        $file = $finder->current();
+        $iterator = $finder->getIterator();
+        $iterator->rewind();
+        $file = $iterator->current();
 
         echo $input->getArgument('commandline'), PHP_EOL;
         echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
