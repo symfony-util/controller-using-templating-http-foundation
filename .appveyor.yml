@@ -6,7 +6,8 @@ init:
 install: 
 - choco search php --exact --all-versions -r
 
-- cinst --params '""/InstallDir:C:\Tools\php""' php --version 7.1.12
+- cinst --params '""/InstallDir:C:\Tools\php""' php # Latest 7.2
+# - cinst --params '""/InstallDir:C:\Tools\php""' php --version 7.1.12
 # - cinst --params '""/InstallDir:C:\Tools\php""' php --version 7.0.26 # Does not install correctly!
 # - cinst --params '""/InstallDir:C:\Tools\php""' php --version 5.6.32
 # - cinst --params '""/InstallDir:C:\Tools\php""' php --version 5.5.38
