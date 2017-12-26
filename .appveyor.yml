@@ -5,7 +5,10 @@ init:
 - SET ANSICON=121x90 (121x90)
 install: 
 - choco search php --exact --all-versions -r
-- cinst --params '""/InstallDir:C:\Tools\php""' php --version 5.4.45
+
+- cinst --params '""/InstallDir:C:\Tools\php""' php --version 5.5.38
+# - cinst --params '""/InstallDir:C:\Tools\php""' php --version 5.4.45
+
 - php.exe --ini
 - echo extension_dir = "ext" >> C:\Tools\php\php.ini
 - echo extension=mbstring >> C:\Tools\php\php.ini
