@@ -30,8 +30,9 @@ install:
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
 - dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer" # Directory of C:\Users\appveyor\AppData\Roaming\Composer
+- dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan"
 - php.exe composer.phar update
 build: off
 test_script:
 # - vendor/bin/phpunit
-- php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\bin\phpstan" analyse -v --level max *.php tests
+- php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\phpstan" analyse -v --level max *.php tests
