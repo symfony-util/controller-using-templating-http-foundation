@@ -15,8 +15,12 @@ install:
 
 - php.exe --ini
 - echo extension_dir = "ext" >> C:\Tools\php\php.ini
-- echo extension=mbstring >> C:\Tools\php\php.ini
-- echo extension=openssl >> C:\Tools\php\php.ini
+# Recent syntax
+# - echo extension=mbstring >> C:\Tools\php\php.ini
+# - echo extension=openssl >> C:\Tools\php\php.ini
+# Old syntax
+- echo extension=php_mbstring.dll >> C:\Tools\php\php.ini
+- echo extension=php_openssl.dll >> C:\Tools\php\php.ini
 # - refreshenv
 # Refreshing environment variables from registry for cmd.exe. Please wait...Finished..
 # appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
