@@ -16,36 +16,41 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 // Symfony\Component\Process hidden dependecy
 
-class OrSuccessCommand extends Command
+class PathFinderEchoCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('orsuccess')
-            ->setDescription('Command line run from Process')
+        $this->setName('pathfinderecho')
+            ->setDescription('Echo first file in finder results for given path')
             ->addArgument(
-                'failsafecommandexitcode',
+                'path',
                 InputArgument::REQUIRED,
-                'Failsafe Command Exit Code'
-            )
-            ->addArgument(
-                'commandline',
-                InputArgument::IS_ARRAY | InputArgument::REQUIRED,
-                'The command line'
+                'The path'
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
-        // This introduces a hidden dependecy on symfony/process!
-        $process = $helper->run($output, $input->getArgument('commandline'));
-        if ($process->isSuccessful()) {
-            return;
-        }
-        if ($process->getExitCode() === (int) ($input->getArgument('failsafecommandexitcode'))) {
-            return;
-        }
+        $finder = new Finder();
+        $finder->files()->in(getcwd())->path($input->getArgument('commandline'));
+        
+        $finder->rewind();
+        $file = $finder->current();
+        
+        echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
+        if ($file->isExecutable()) {
+            echo 'exec: '.$file->getRelativePathname().PHP_EOL;
+            echo 'exec: '.$file->getRealPath().PHP_EOL;
 
-        return $process->getExitCode();
+            return
+        } elseif ($file->isReadable()) {
+            echo 'php: '.$file->getRelativePathname().PHP_EOL;
+            echo 'php: '.$file->getRealPath().PHP_EOL;
+
+            return
+        } else {
+            echo 'problem: '.$file->getRelativePathname().PHP_EOL;
+            echo 'problem: '.$file->getRealPath().PHP_EOL;
+        }
     }
 }
