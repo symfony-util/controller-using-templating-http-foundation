@@ -33,7 +33,7 @@ class PathFinderEchoCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = new Finder();
-        $finder->files()->in(getcwd())->path($input->getArgument('commandline'));
+        $finder->files()->in(getcwd())->path($input->getArgument('path'));
         
         $finder->rewind();
         $file = $finder->current();
