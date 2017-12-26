@@ -26,7 +26,7 @@ install:
 # - composer
 - php.exe composer.phar --working-dir=scripts update
 - php.exe scripts/install-manager.php --ansi
-- php.exe scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpstan/phpstan-phpunit
+- php.exe scripts/install-manager.php -vvv --ansi -- run php.exe composer.phar global require --dev phpstan/phpstan-phpunit
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - php.exe composer.phar update
 build: off
