@@ -34,10 +34,10 @@ class PathFinderEchoCommand extends Command
     {
         $finder = new Finder();
         $finder->files()->in(getcwd())->path($input->getArgument('path'));
-        
+
         $finder->rewind();
         $file = $finder->current();
-        
+
         echo $input->getArgument('commandline'), PHP_EOL;
         echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
         if ($file->isExecutable()) {
@@ -50,9 +50,8 @@ class PathFinderEchoCommand extends Command
             echo 'php: '.$file->getRealPath().PHP_EOL;
 
             return;
-        } else {
-            echo 'problem: '.$file->getRelativePathname().PHP_EOL;
-            echo 'problem: '.$file->getRealPath().PHP_EOL;
         }
+        echo 'problem: '.$file->getRelativePathname().PHP_EOL;
+        echo 'problem: '.$file->getRealPath().PHP_EOL;
     }
 }
