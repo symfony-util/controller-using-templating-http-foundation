@@ -29,6 +29,7 @@ install:
 - php.exe scripts/install-manager.php -vvv --ansi -- run php.exe composer.phar global require --dev phpstan/phpstan-phpunit
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
+- dir "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer" # Directory of C:\Users\appveyor\AppData\Roaming\Composer
 - php.exe composer.phar update
 build: off
 test_script:
