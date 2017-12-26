@@ -34,3 +34,4 @@ install:
 build: off
 test_script:
 # - vendor/bin/phpunit
+- php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\bin\phpstan" analyse -v --level max *.php tests
