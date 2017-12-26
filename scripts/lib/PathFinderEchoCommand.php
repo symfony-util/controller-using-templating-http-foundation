@@ -39,7 +39,7 @@ class PathFinderEchoCommand extends Command
         $iterator->rewind();
         $file = $iterator->current();
 
-        echo $input->getArgument('commandline'), PHP_EOL;
+        echo $input->getArgument('path'), PHP_EOL;
         echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
         if ($file->isExecutable()) {
             echo 'exec: '.$file->getRelativePathname().PHP_EOL;
