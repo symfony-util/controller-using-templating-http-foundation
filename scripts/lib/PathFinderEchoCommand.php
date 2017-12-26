@@ -37,17 +37,18 @@ class PathFinderEchoCommand extends Command
         $finder->rewind();
         $file = $finder->current();
         
+        echo $input->getArgument('commandline'), PHP_EOL;
         echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
         if ($file->isExecutable()) {
             echo 'exec: '.$file->getRelativePathname().PHP_EOL;
             echo 'exec: '.$file->getRealPath().PHP_EOL;
 
-            return
+            return;
         } elseif ($file->isReadable()) {
             echo 'php: '.$file->getRelativePathname().PHP_EOL;
             echo 'php: '.$file->getRealPath().PHP_EOL;
 
-            return
+            return;
         } else {
             echo 'problem: '.$file->getRelativePathname().PHP_EOL;
             echo 'problem: '.$file->getRealPath().PHP_EOL;
