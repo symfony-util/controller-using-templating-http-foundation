@@ -43,4 +43,4 @@ build: off
 test_script:
 # - vendor/bin/phpunit
 # - php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin\phpstan" analyse -v --level max *.php tests
-- php.exe scripts/install-manager.php -vvv --ansi -- orsuccess 127 php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin\phpstan" analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts/*.php scripts/lib
+- php.exe scripts/install-manager.php -vvv --ansi -- orsuccess 127 php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin\phpstan" analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts\*.php scripts/lib
