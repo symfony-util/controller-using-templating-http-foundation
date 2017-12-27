@@ -22,7 +22,7 @@ class PathFinderEchoCommand extends Command
 {
     const NAME = 'pathfinderecho';
     const DESCRIPTION = 'Echo first file in finder results for given path';
-    const ARGUMENTS = ['path'=>[InputArgument::REQUIRED, 'The path']]; // Not used! (Default values may depend of context)
+    // const ARGUMENTS = ['path'=>[InputArgument::REQUIRED, 'The path']]; // Not used! (Default values may depend of context) Requires recent PHP version.
 
     protected function configure()
     {
