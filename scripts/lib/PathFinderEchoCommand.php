@@ -95,6 +95,6 @@ class PathFinderEchoCommand extends Command
             return;
         }
         // echo 'Problem: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-        echo 'Problem: '.$file->getRealPath().PHP_EOL;
+        echo 'Warning file cannot been executed or run: '.$file->getRealPath().PHP_EOL;
     }
 }
