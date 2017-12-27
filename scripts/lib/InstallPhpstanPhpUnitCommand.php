@@ -18,11 +18,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class InstallPhpstanPhpUnitCommand extends Command
 {
     const NAME = 'install:phpstan-phpunit';
+    const DESCRIPTION = 'phpstan/phpstan-phpunit composer install';
 
     protected function configure()
     {
-        $this->setName(NAME)
-            ->setDescription('phpstan/phpstan-phpunit composer install');
+        $this->setName(self::NAME)
+            ->setDescription(self::DESCRIPTION);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
