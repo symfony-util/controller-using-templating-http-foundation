@@ -44,7 +44,6 @@ class OrSuccessCommand extends Command
 
         $process = $helper->run($output, $input->getArgument('commandline'));
         if ($process->isSuccessful()) {
-
             return;
         }
         if ($process->getExitCode() === (int) ($input->getArgument('failsafecommandexitcode'))) {
