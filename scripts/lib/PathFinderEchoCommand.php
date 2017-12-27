@@ -55,7 +55,7 @@ class PathFinderEchoCommand extends Command
         $finder->in(getcwd())->path($input->getArgument('path'));
         switch (PHP_OS) {
             case 'Linux':
-                $finder-->in(getenv('HOME'));
+                $finder->in(getenv('HOME'));
                 break;
             // case '':
             case 'WINNT': // Wine
