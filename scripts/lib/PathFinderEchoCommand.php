@@ -52,7 +52,7 @@ class PathFinderEchoCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = new Finder();
-        $finder->in(getcwd())->path($input->getArgument('path'));
+        $finder->in(getcwd())->path($input->getArgument('path'))->ignoreUnreadableDirs();
         switch (PHP_OS) {
             case 'Linux':
                 $finder->in(getenv('HOME'));
