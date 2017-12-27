@@ -79,7 +79,7 @@ class ExecutePathFoundCommand extends Command
             $finder = $finder->ignoreDotFiles(false);
         }
 
-        $file = $finder->getIterator()->rewind()->current();
+        $file = $finder->getIterator()->current();
 
         // echo $input->getArgument('path'), PHP_EOL;
         // echo PHP_OS, DIRECTORY_SEPARATOR, PHP_BINARY, PHP_EOL;
