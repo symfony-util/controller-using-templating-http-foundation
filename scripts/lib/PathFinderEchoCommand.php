@@ -58,7 +58,7 @@ class PathFinderEchoCommand extends Command
                 $finder->in(getenv('HOME'));
                 break;
             // case '':
-            case 'WINNT': // Wine
+            case 'WINNT': // Wine + AppVeyor
                 $finder->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
                 echo 'HOMEDRIVE HOMEPATH', getenv('HOMEDRIVE'), getenv('HOMEPATH'), PHP_EOL;
                 echo 'APPDATA', getenv('APPDATA'), PHP_EOL;
