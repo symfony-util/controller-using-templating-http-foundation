@@ -41,7 +41,7 @@ class PathFinderEchoCommand extends Command
 
         echo $input->getArgument('path'), PHP_EOL;
         echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
-        if (is_null($file)) {
+        if (null === $file) {
             return;
         }
         if ($file->isExecutable()) {
