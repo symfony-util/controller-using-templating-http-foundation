@@ -19,11 +19,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class OrSuccessCommand extends Command
 {
     const NAME = 'orsuccess';
+    const DESCRIPTION = 'Command line run from Process';
 
     protected function configure()
     {
-        $this->setName(NAME)
-            ->setDescription('Command line run from Process')
+        $this->setName(self::NAME)
+            ->setDescription(self::DESCRIPTION)
             ->addArgument(
                 'failsafecommandexitcode',
                 InputArgument::REQUIRED,
