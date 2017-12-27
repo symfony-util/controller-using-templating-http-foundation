@@ -19,11 +19,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FailSafeCommand extends Command
 {
     const NAME = 'failsafe';
+    const DESCRIPTION = 'Command line run from Process (failsafe)';
 
     protected function configure()
     {
-        $this->setName(NAME)
-            ->setDescription('Command line run from Process (failsafe)')
+        $this->setName(self::NAME)
+            ->setDescription(self::DESCRIPTION)
             ->addArgument(
                 'commandline',
                 InputArgument::IS_ARRAY | InputArgument::REQUIRED,
