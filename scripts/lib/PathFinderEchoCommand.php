@@ -11,8 +11,8 @@
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
 
@@ -38,14 +38,14 @@ class PathFinderEchoCommand extends Command
                 'f',
                 InputOption::VALUE_OPTIONAL,
                 'Results must be files.',
-                True
+                true
             )
             ->addOption(
                 'dotfiles',
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'To include dot files',
-                True
+                true
             );
     }
 
@@ -85,7 +85,6 @@ class PathFinderEchoCommand extends Command
         // In PHP 7.2 PHP_OS_FAMILY will be available. This should go in a kind of phpinfo module.
 
         if (null === $file) {
-
             return;
         }
         if ($file->isExecutable()) {
