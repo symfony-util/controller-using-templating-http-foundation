@@ -18,9 +18,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class OrSuccessCommand extends Command
 {
+    const NAME = 'orsuccess';
+
     protected function configure()
     {
-        $this->setName('orsuccess')
+        $this->setName(NAME)
             ->setDescription('Command line run from Process')
             ->addArgument(
                 'failsafecommandexitcode',
@@ -38,11 +40,15 @@ class OrSuccessCommand extends Command
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         // This introduces a hidden dependecy on symfony/process!
+
         $process = $helper->run($output, $input->getArgument('commandline'));
         if ($process->isSuccessful()) {
+
             return;
         }
         if ($process->getExitCode() === (int) ($input->getArgument('failsafecommandexitcode'))) {
+            // This is not portable between Linux and Windows
+
             return;
         }
 
