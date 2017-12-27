@@ -1,4 +1,4 @@
-<?php
+e<?php
 
 /*
  * This file is part of the Symfony-Util package.
@@ -20,8 +20,8 @@ use Symfony\Component\Finder\Finder;
 
 class ExecutePathFoundCommand extends Command
 {
-    const NAME = 'pathfinderecho';
-    const DESCRIPTION = 'Echo first file in finder results for given path';
+    const NAME = 'execpathfound';
+    const DESCRIPTION = 'Exec first file in finder results for given path';
     // const ARGUMENTS = ['path'=>[InputArgument::REQUIRED, 'The path']]; // Not used! (Default values may depend of context) Requires recent PHP version.
 
     protected function configure()
@@ -32,6 +32,11 @@ class ExecutePathFoundCommand extends Command
                 'path',
                 InputArgument::REQUIRED,
                 'The path'
+            )
+            ->addArgument(
+                'commandarguments',
+                InputArgument::IS_ARRAY | InputArgument::REQUIRED,
+                'The command line arguments'
             )
             ->addOption(
                 'files',
@@ -80,21 +85,36 @@ class ExecutePathFoundCommand extends Command
         // echo PHP_OS, DIRECTORY_SEPARATOR, PHP_BINARY, PHP_EOL;
         // In PHP 7.2 PHP_OS_FAMILY will be available. This should go in a kind of phpinfo module.
 
+        $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
+        // This introduces a hidden dependecy on symfony/process!
+
         if (null === $file) {
             return;
         }
         if ($file->isExecutable()) {
             // echo 'Executable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-            echo 'Executable: '.$file->getRealPath().PHP_EOL;
+            // echo 'Executable: '.$file->getRealPath().PHP_EOL;
 
-            return;
+            return $helper->run(
+                $output, 
+                array_merge(
+                    [$file->getRealPath()], 
+                    $input->getArgument('commandarguments')
+                )
+            )->getExitCode();
         } elseif ($file->isReadable()) {
             // echo 'Readeable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-            echo 'Readeable: '.$file->getRealPath().PHP_EOL;
+            // echo 'Readeable: '.$file->getRealPath().PHP_EOL;
 
-            return;
+            return $helper->run(
+                $output, 
+                array_merge(
+                    [PHP_BINARY, $file->getRealPath()], 
+                    $input->getArgument('commandarguments')
+                )
+            )->getExitCode();
         }
         // echo 'Problem: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-        echo 'Problem: '.$file->getRealPath().PHP_EOL;
+        echo 'Warning file cannot been executed or run: '.$file->getRealPath().PHP_EOL;
     }
 }
