@@ -17,9 +17,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class InstallPhpstanPhpUnitCommand extends Command
 {
+    const NAME = 'install:phpstan-phpunit';
+
     protected function configure()
     {
-        $this->setName('install:phpstan-phpunit')
+        $this->setName(NAME)
             ->setDescription('phpstan/phpstan-phpunit composer install');
     }
 
@@ -27,10 +29,11 @@ class InstallPhpstanPhpUnitCommand extends Command
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         // This introduces a hidden dependecy on symfony/process!
-        // if (7 <= PHP_MAJOR_VERSION)
+
         if (0 !== $helper->run($output, 'composer global require --dev phpstan/phpstan-phpunit')->getExitCode()) {
             $helper->mustRun($output, 'composer global require --dev phpunit/phpunit');
         }
+        // phpstan requires 7 <= PHP_MAJOR_VERSION)
     }
 }
 
