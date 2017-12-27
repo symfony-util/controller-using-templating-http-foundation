@@ -18,9 +18,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class RunCommand extends Command
 {
+    const NAME = 'run';
+
     protected function configure()
     {
-        $this->setName('run')
+        $this->setName('NAME')
             ->setDescription('Command line run from Process')
             ->addArgument(
                 'commandline',
@@ -33,6 +35,7 @@ class RunCommand extends Command
     {
         $helper = $this->getHelper('process'); //! https://symfony.com/doc/4.0/components/console/helpers/processhelper.html
         // This introduces a hidden dependecy on symfony/process!
+
         return $helper->run($output, $input->getArgument('commandline'))->getExitCode();
     }
 }
