@@ -92,6 +92,7 @@ script:
 # pathfinderecho
 - ls -a --color
 - pathfinderecho .travis/bin
+- ls -a --color .travis || true
 - pathfinderecho bin/security-checker
 - pathfinderecho vendor/symfony
 - pathfinderecho scripts
