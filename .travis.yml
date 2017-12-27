@@ -96,7 +96,7 @@ script:
 - pathfinderecho .travis/bin
 - ls -a --color .travis || true
 - pathfinderecho bin/security-checker
-- ls -a --color .travis/bin || true
+- ls -la --color .travis/bin || true
 - pathfinderecho vendor/symfony
 - pathfinderecho scripts
 - pathfinderecho .php
