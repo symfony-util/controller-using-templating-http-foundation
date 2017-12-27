@@ -92,8 +92,8 @@ script:
 # pathfinderecho
 - pathfinderecho .travis/bin/security-checker
 - pathfinderecho vendor/symfony
-- pathfinderecho scripts/*.php
-- pathfinderecho *.php
+- pathfinderecho scripts/\*.php
+- pathfinderecho \*.php
 
 #  php -l main php code
 - for f in $(find . -path './vendor' -prune -o -path './scripts/vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done
