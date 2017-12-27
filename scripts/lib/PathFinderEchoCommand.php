@@ -51,54 +51,50 @@ class PathFinderEchoCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $finder = new Finder();
-        $finder->in(getcwd())->path($input->getArgument('path'))->ignoreUnreadableDirs();
+        $finder = (new Finder())->in(getcwd())->path($input->getArgument('path'))->ignoreUnreadableDirs();
         switch (PHP_OS) {
             case 'Linux':
-                $finder->in(getenv('HOME'));
+                $finder = $finder->in(getenv('HOME'));
                 break;
-            // case '':
             case 'WINNT': // Wine + AppVeyor
-                $finder->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
-                echo 'HOMEDRIVE HOMEPATH', getenv('HOMEDRIVE'), getenv('HOMEPATH'), PHP_EOL;
-                echo 'APPDATA', getenv('APPDATA'), PHP_EOL;
-                echo 'LOCALAPPDATA', getenv('LOCALAPPDATA'), PHP_EOL;
-                echo 'USERPROFILE', getenv('USERPROFILE'), PHP_EOL;
+                $finder = $finder->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
+                // echo 'HOMEDRIVE HOMEPATH', getenv('HOMEDRIVE'), getenv('HOMEPATH'), PHP_EOL;
+                // echo 'APPDATA', getenv('APPDATA'), PHP_EOL;
+                // echo 'LOCALAPPDATA', getenv('LOCALAPPDATA'), PHP_EOL;
+                // echo 'USERPROFILE', getenv('USERPROFILE'), PHP_EOL;
                 // https://en.wikipedia.org/wiki/Environment_variable#Windows
                 break;
             default:
                 echo 'Warning: Unrecognized Operating System: ', PHP_OS, PHP_EOL;
         }
         if ($input->getOption('files')) {
-            $finder->files();
+            $finder = $finder->files();
         }
         if ($input->getOption('dotfiles')) {
-            $finder->ignoreDotFiles(false);
+            $finder = $finder->ignoreDotFiles(false);
         }
 
-        $iterator = $finder->getIterator();
-        $iterator->rewind();
-        $file = $iterator->current();
+        $file = $finder->getIterator()->rewind()->current();
 
-        echo $input->getArgument('path'), PHP_EOL;
-        echo PHP_OS, DIRECTORY_SEPARATOR, PHP_BINARY, PHP_EOL;
+        // echo $input->getArgument('path'), PHP_EOL;
+        // echo PHP_OS, DIRECTORY_SEPARATOR, PHP_BINARY, PHP_EOL;
         // In PHP 7.2 PHP_OS_FAMILY will be available. This should go in a kind of phpinfo module.
 
         if (null === $file) {
             return;
         }
         if ($file->isExecutable()) {
-            echo 'Executable: '.$file->getRelativePathname().PHP_EOL;
+            // echo 'Executable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
             echo 'Executable: '.$file->getRealPath().PHP_EOL;
 
             return;
         } elseif ($file->isReadable()) {
-            echo 'Readeable: '.$file->getRelativePathname().PHP_EOL;
+            // echo 'Readeable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
             echo 'Readeable: '.$file->getRealPath().PHP_EOL;
 
             return;
         }
-        echo 'Problem: '.$file->getRelativePathname().PHP_EOL;
+        // echo 'Problem: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
         echo 'Problem: '.$file->getRealPath().PHP_EOL;
     }
 }
