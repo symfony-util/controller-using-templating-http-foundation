@@ -40,7 +40,8 @@ class PathFinderEchoCommand extends Command
         $file = $iterator->current();
 
         echo $input->getArgument('path'), PHP_EOL;
-        echo PHP_OS, PHP_OS_FAMILY, DIRECTORY_SEPARATOR, PHP_EOL;
+        echo PHP_OS, DIRECTORY_SEPARATOR, PHP_EOL;
+        // In PHP 7.2 PHP_OS_FAMILY will be available.
         if (null === $file) {
             return;
         }
