@@ -52,14 +52,14 @@ class PathFinderEchoCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = new Finder();
-        $finder-->in(getcwd())->path($input->getArgument('path'));
+        $finder->in(getcwd())->path($input->getArgument('path'));
         switch (PHP_OS) {
             case 'Linux':
                 $finder-->in(getenv('HOME'));
                 break;
             // case '':
             case 'WINNT': // Wine
-                $finder-->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
+                $finder->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
                 echo 'HOMEDRIVE HOMEPATH', getenv('HOMEDRIVE'), getenv('HOMEPATH'), PHP_EOL;
                 echo 'APPDATA', getenv('APPDATA'), PHP_EOL;
                 echo 'LOCALAPPDATA', getenv('LOCALAPPDATA'), PHP_EOL;
