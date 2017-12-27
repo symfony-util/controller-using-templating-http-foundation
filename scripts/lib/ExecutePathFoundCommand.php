@@ -96,9 +96,9 @@ class ExecutePathFoundCommand extends Command
             // echo 'Executable: '.$file->getRealPath().PHP_EOL;
 
             return $helper->run(
-                $output, 
+                $output,
                 array_merge(
-                    [$file->getRealPath()], 
+                    [$file->getRealPath()],
                     $input->getArgument('commandarguments')
                 )
             )->getExitCode();
@@ -107,9 +107,9 @@ class ExecutePathFoundCommand extends Command
             // echo 'Readeable: '.$file->getRealPath().PHP_EOL;
 
             return $helper->run(
-                $output, 
+                $output,
                 array_merge(
-                    [PHP_BINARY, $file->getRealPath()], 
+                    [PHP_BINARY, $file->getRealPath()],
                     $input->getArgument('commandarguments')
                 )
             )->getExitCode();
