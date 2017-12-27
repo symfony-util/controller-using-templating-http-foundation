@@ -90,6 +90,7 @@ before_script:
 
 script:
 # pathfinderecho
+- ls -a --color
 - pathfinderecho .travis/bin
 - pathfinderecho bin/security-checker
 - pathfinderecho vendor/symfony
