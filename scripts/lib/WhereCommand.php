@@ -49,4 +49,5 @@ class WhereCommand extends Command
                 echo 'Readeable: '.$file->getRealPath().PHP_EOL;
             }
         }
+    }
 }
