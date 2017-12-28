@@ -44,12 +44,12 @@ class WhereCommand extends Command
             }
             // See https://github.com/symfony/symfony/blob/v4.0.2/src/Symfony/Component/Finder/Finder.php public function in
             // Double checking is_dir and glob takes a lot of time of disk I/O!
+            // The *in* method better should be redefined (in a child class) to ignore inexistant directories!
         }
         // try {
         //     $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
         // } catch (InvalidArgumentException $e) { }
         foreach ($finder as $file) {
-            var_dump($file->getRealPath());
             if ($file->isExecutable()) {
                 echo 'Executable: '.$file->getRealPath().PHP_EOL;
             } elseif ($file->isReadable()) {
