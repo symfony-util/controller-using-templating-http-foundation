@@ -25,5 +25,6 @@ $application->add(new RunCommand());
 $application->add(new OrSuccessCommand());
 $application->add(new PathFinderEchoCommand());
 $application->add(new ExecutePathFoundCommand());
+$application->add(new WhereCommand());
 
 $application->run();
