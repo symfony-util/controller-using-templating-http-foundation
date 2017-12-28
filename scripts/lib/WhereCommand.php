@@ -20,8 +20,8 @@ use Symfony\Component\Finder\Finder;
 
 class WhereCommand extends Command
 {
-    const NAME = 'pathfinderecho';
-    const DESCRIPTION = 'Echo first file in finder results for given path';
+    const NAME = 'where';
+    const DESCRIPTION = 'Echo file finder results for system path';
     // const ARGUMENTS = ['path'=>[InputArgument::REQUIRED, 'The path']]; // Not used! (Default values may depend of context) Requires recent PHP version.
 
     protected function configure()
@@ -29,72 +29,24 @@ class WhereCommand extends Command
         $this->setName(self::NAME)
             ->setDescription(self::DESCRIPTION)
             ->addArgument(
-                'path',
+                'name',
                 InputArgument::REQUIRED,
-                'The path'
+                'The command filename'
             )
-            ->addOption(
-                'files',
-                'f',
-                InputOption::VALUE_OPTIONAL,
-                'Results must be files.',
-                true
-            )
-            ->addOption(
-                'dotfiles',
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'To include dot files',
-                true
-            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $finder = (new Finder())->in(getcwd())->path($input->getArgument('path'))->ignoreUnreadableDirs();
-        switch (PHP_OS) {
-            case 'Linux':
-                $finder = $finder->in(getenv('HOME'));
-                break;
-            case 'WINNT': // Wine + AppVeyor
-                $finder = $finder->in(getenv('HOMEDRIVE').getenv('HOMEPATH'));
-                // echo 'HOMEDRIVE HOMEPATH', getenv('HOMEDRIVE'), getenv('HOMEPATH'), PHP_EOL;
-                // echo 'APPDATA', getenv('APPDATA'), PHP_EOL;
-                // echo 'LOCALAPPDATA', getenv('LOCALAPPDATA'), PHP_EOL;
-                // echo 'USERPROFILE', getenv('USERPROFILE'), PHP_EOL;
-                // https://en.wikipedia.org/wiki/Environment_variable#Windows
-                break;
-            default:
-                echo 'Warning: Unrecognized Operating System: ', PHP_OS, PHP_EOL;
+        $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
+        foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
+            $finder->in($directory);
         }
-        if ($input->getOption('files')) {
-            $finder = $finder->files();
+        foreach ($finder as $file) {
+            var_dump($file->getRealPath());
+            if ($file->isExecutable()) {
+                echo 'Executable: '.$file->getRealPath().PHP_EOL;
+            } elseif ($file->isReadable()) {
+                echo 'Readeable: '.$file->getRealPath().PHP_EOL;
+            }
         }
-        if ($input->getOption('dotfiles')) {
-            $finder = $finder->ignoreDotFiles(false);
-        }
-
-        $file = $finder->getIterator()->current();
-
-        // echo $input->getArgument('path'), PHP_EOL;
-        // echo PHP_OS, DIRECTORY_SEPARATOR, PHP_BINARY, PHP_EOL;
-        // In PHP 7.2 PHP_OS_FAMILY will be available. This should go in a kind of phpinfo module.
-
-        if (null === $file) {
-            return;
-        }
-        if ($file->isExecutable()) {
-            // echo 'Executable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-            echo 'Executable: '.$file->getRealPath().PHP_EOL;
-
-            return;
-        } elseif ($file->isReadable()) {
-            // echo 'Readeable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-            echo 'Readeable: '.$file->getRealPath().PHP_EOL;
-
-            return;
-        }
-        // echo 'Problem: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
-        echo 'Warning file cannot been executed or run: '.$file->getRealPath().PHP_EOL;
-    }
 }
