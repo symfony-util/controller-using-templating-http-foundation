@@ -46,10 +46,9 @@ install:
 - php.exe scripts/install-manager.php --ansi
 - php.exe scripts/install-manager.php -vvv --ansi -- failsafe php.exe composer.phar global require --dev phpstan/phpstan-phpunit
 - php.exe scripts/install-manager.php -vvv --ansi -- run php.exe composer.phar global require --dev phpunit/phpunit
-- path
-- SET PATH=%APPDATA%\Composer\vendor\phpunit\phpunit;%PATH%
-- path
 - SET PATH=%APPDATA%\Composer\vendor\bin;%PATH%
+- SET PATH=%APPDATA%\Composer\vendor\phpstan\phpstan\bin;%PATH%
+- SET PATH=%APPDATA%\Composer\vendor\phpunit\phpunit;%PATH%
 - path
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpunit/phpunit
