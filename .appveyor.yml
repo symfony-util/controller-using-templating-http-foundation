@@ -56,8 +56,8 @@ install:
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan/phpstan
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan/phpstan/bin/phpstan
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho bin/phpstan
-- php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpunit
-- php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan
+- php.exe scripts/install-manager.php -vvv --ansi -- where phpunit
+- php.exe scripts/install-manager.php -vvv --ansi -- where phpstan
 - dir
 - dir *.php
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
