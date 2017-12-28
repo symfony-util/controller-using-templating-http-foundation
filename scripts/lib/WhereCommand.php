@@ -43,7 +43,7 @@ class WhereCommand extends Command
         // }
         try {
             $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
-        } catch (InvalidArgumentException) { }
+        } catch (InvalidArgumentException $e) { }
         foreach ($finder as $file) {
             var_dump($file->getRealPath());
             if ($file->isExecutable()) {
