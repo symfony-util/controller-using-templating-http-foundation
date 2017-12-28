@@ -82,6 +82,8 @@ before_install:
 # SensioLabs Security Checker
 - if [[ "5.4" < "$TRAVIS_PHP_VERSION" ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
+- ls -l --color ~/.composer/vendor/bin || true
+
 install:
 - failsafe cp config/parameters.yml.travis config/parameters.yml
 - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest --optimize-autoloader --apcu-autoloader; fi
