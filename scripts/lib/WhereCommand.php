@@ -38,9 +38,10 @@ class WhereCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
-        foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
-            $finder->in($directory);
-        }
+        // foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
+        //     $finder->in($directory);
+        // }
+        $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
         foreach ($finder as $file) {
             var_dump($file->getRealPath());
             if ($file->isExecutable()) {
