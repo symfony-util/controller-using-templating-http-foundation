@@ -38,12 +38,16 @@ class WhereCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
-        // foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
-        //     $finder->in($directory);
-        // }
-        try {
-            $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
-        } catch (InvalidArgumentException $e) { }
+        foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
+            if (is_dir($directory) || glob($dir, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR)) {
+                $finder = $finder->in($directory);
+            }
+            // See https://github.com/symfony/symfony/blob/v4.0.2/src/Symfony/Component/Finder/Finder.php public function in
+            // Double checking is_dir and glob takes a lot of time of disk I/O!
+        }
+        // try {
+        //     $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
+        // } catch (InvalidArgumentException $e) { }
         foreach ($finder as $file) {
             var_dump($file->getRealPath());
             if ($file->isExecutable()) {
