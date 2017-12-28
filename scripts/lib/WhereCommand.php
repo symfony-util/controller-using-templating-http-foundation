@@ -39,7 +39,7 @@ class WhereCommand extends Command
     {
         $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
         foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
-            if (is_dir($directory) || glob($dir, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR)) {
+            if (is_dir($directory) || glob($directory, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR)) {
                 $finder = $finder->in($directory);
             }
             // See https://github.com/symfony/symfony/blob/v4.0.2/src/Symfony/Component/Finder/Finder.php public function in
