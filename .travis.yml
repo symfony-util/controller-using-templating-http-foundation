@@ -59,6 +59,7 @@ before_install:
 - alias pathfinderecho='php scripts/install-manager.php --ansi -vvv -- pathfinderecho'
 - alias execpathfound='php scripts/install-manager.php --ansi -vvv -- execpathfound'
 - alias run='php scripts/install-manager.php --ansi -vvv -- run'
+- alias where='php scripts/install-manager.php --ansi -vvv -- where'
 - sp
 
 # php-cs-fixer
@@ -115,6 +116,7 @@ script:
 - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php-cs-fixer fix --diff --dry-run -vvv --using-cache=no; fi
 - orsuccess 127 php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
 - pathfinderecho php-cs-fixer
+- where php-cs-fixer
 - execpathfound php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
 # --stop-on-violation 
 
@@ -122,6 +124,7 @@ script:
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php tests; fi
 - orsuccess 127 phpstan analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts/*.php scripts/lib
 - pathfinderecho vendor/bin/phpstan
+- where phpstan
 - execpathfound vendor/bin/phpstan analyse --ansi --debug --level max *.php tests --autoload-file=scripts/vendor/autoload.php scripts/*.php scripts/lib
 - if [[ "5.6" < "$TRAVIS_PHP_VERSION" ]]; then pushd scripts ; $HOME/.composer/vendor/bin/phpstan analyse -v --level max *.php; popd; fi # Insensitive to errors!!!
 
