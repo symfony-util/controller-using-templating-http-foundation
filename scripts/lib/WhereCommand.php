@@ -42,7 +42,8 @@ class WhereCommand extends Command
                 $finder = $finder->in($directory);
             }
             // See https://github.com/symfony/symfony/blob/v4.0.2/src/Symfony/Component/Finder/Finder.php public function in
-            // Double checking is_dir and glob takes a lot of time of disk I/O!
+            // Double checking is_dir and glob takes a lot of time of disk I/O! But the result is cached:
+            // http://php.net/manual/fr/function.clearstatcache.php
             // The *in* method better should be redefined (in a child class) to ignore inexistant directories!
         }
         // try {
