@@ -41,7 +41,9 @@ class WhereCommand extends Command
         // foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory){
         //     $finder->in($directory);
         // }
-        $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
+        try {
+            $finder->in(explode(PATH_SEPARATOR, getenv('PATH')));
+        } catch (InvalidArgumentException) { }
         foreach ($finder as $file) {
             var_dump($file->getRealPath());
             if ($file->isExecutable()) {
