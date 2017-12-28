@@ -1,5 +1,7 @@
 init:
+- path
 - SET PATH=C:\Program Files\OpenSSL;C:\Tools\php;%PATH%
+- path
 - SET COMPOSER_NO_INTERACTION=1
 # - SET PHP=1 # This var is connected to PHP install cache
 - SET ANSICON=121x90 (121x90)
@@ -44,11 +46,18 @@ install:
 - php.exe scripts/install-manager.php --ansi
 - php.exe scripts/install-manager.php -vvv --ansi -- failsafe php.exe composer.phar global require --dev phpstan/phpstan-phpunit
 - php.exe scripts/install-manager.php -vvv --ansi -- run php.exe composer.phar global require --dev phpunit/phpunit
+- path
+- SET PATH=%APPDATA%\Composer\vendor\phpunit\phpunit;%PATH%
+- path
+- SET PATH=%APPDATA%\Composer\vendor\bin;%PATH%
+- path
 # - php.exe composer.phar require --dev phpstan/phpstan-phpunit
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpunit/phpunit
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan/phpstan
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan/phpstan/bin/phpstan
 - php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho bin/phpstan
+- php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpunit
+- php.exe scripts/install-manager.php -vvv --ansi -- pathfinderecho phpstan
 - dir
 - dir *.php
 - dir "%HOMEDRIVE%%HOMEPATH%" # Directory of C:\Users\appveyor
