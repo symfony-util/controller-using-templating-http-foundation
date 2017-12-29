@@ -24,6 +24,10 @@
     "autoload": {
         "psr-4": {
             "SymfonyUtil\\Controller\\": "",
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "": ["tests/"]
         }
     },
