@@ -63,9 +63,10 @@ before_install:
 - sp
 
 # php-cs-fixer
-- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=$HOME/bin/php-cs-fixer; fi
+# - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=$HOME/bin/php-cs-fixer; fi
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then composer global require --dev symfony-util/coding-standards-fixer friendsofphp/php-cs-fixer; fi
 # - if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php .travis/bin/php-cs-fixer --version; fi
-- failsafe chmod u+x ~/bin/php-cs-fixer
+# - failsafe chmod u+x ~/bin/php-cs-fixer
 - failsafe php-cs-fixer --version
 
 # PHPStan - PHP Static Analysis Tool
@@ -115,11 +116,11 @@ script:
 - if true; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
 
 # php-cs-fixer
-- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then php-cs-fixer fix --diff --dry-run -vvv --using-cache=no; fi
-- orsuccess 127 php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
-- pathfinderecho php-cs-fixer
+- if [[ "5.5" < "$TRAVIS_PHP_VERSION" ]]; then ~/.composer/vendor/bin/php-cs-fixer fix --diff --dry-run -vvv --using-cache=no; fi
+- orsuccess 127 ~/.composer/vendor/bin/php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
+- pathfinderecho vendor/bin/php-cs-fixer
 - where php-cs-fixer
-- execpathfound php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
+- execpathfound vendor/bin/php-cs-fixer fix --diff --dry-run -vvv --using-cache=no
 # --stop-on-violation 
 
 # PHPStan - PHP Static Analysis Tool
