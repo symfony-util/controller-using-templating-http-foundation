@@ -35,6 +35,26 @@
         "branch-alias": {
             "dev-master": "5.3.x-dev"
         }
+    },
+    "scripts": {
+        "phpstan": [
+            "@composer require --dev phpstan/phpstan",
+            "phpstan --version",
+            "@composer remove --dev phpstan/phpstan"
+        ],
+        "phpunit": [
+            "@composer global require --dev phpunit/phpunit",
+            "@composer global show",
+            "phpunit --version",
+            "which phpunit",
+            "@composer global remove --dev phpunit/phpunit"
+        ],
+        "security:check": [
+            "@composer global require --dev sensiolabs/security-checker",
+            "@composer global show",
+            "security-checker --version security:check",
+            "@composer global remove --dev sensiolabs/security-checker"
+        ]
     }
 }
 
