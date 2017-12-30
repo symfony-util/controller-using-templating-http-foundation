@@ -23,7 +23,7 @@ matrix:
     - SYMFONY_LTS="3"
   - php: 7.2
     env:
-    # - SYMFONY_LTS="3"
+    - SYMFONY_LTS="4.x-dev@dev"
 
 before_install:
 - shopt -s expand_aliases
