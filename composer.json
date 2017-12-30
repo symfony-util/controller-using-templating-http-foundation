@@ -52,7 +52,8 @@
         "security:check": [
             "@composer global require --dev sensiolabs/security-checker",
             "@composer global show",
-            "security-checker --version security:check",
+            "security-checker --version",
+            "security-checker security:check",
             "@composer global remove --dev sensiolabs/security-checker"
         ]
     }
