@@ -21,9 +21,9 @@ matrix:
   - php: 5.4
     env:
     - SYMFONY_LTS="3"
-  - php: nightly
+  - php: 7.2
     env:
-    - SYMFONY_LTS="3"
+    # - SYMFONY_LTS="3"
 
 before_install:
 - shopt -s expand_aliases
