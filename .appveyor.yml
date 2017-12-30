@@ -71,3 +71,4 @@ test_script:
 - php.exe scripts/install-manager.php -vvv --ansi -- orsuccess 127 php.exe "%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Composer\vendor\phpstan\phpstan\bin\phpstan" analyse --ansi --debug --level max --autoload-file=scripts/vendor/autoload.php scripts/lib
 # 1 analyse fails
 # *.php tests scripts\*.php 
+- php.exe composer.phar security:check
