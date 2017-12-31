@@ -58,7 +58,7 @@ before_install:
 - alias orsuccess='php scripts/install-manager.php --ansi -vvv -- orsuccess'
 - alias pathfinderecho='php scripts/install-manager.php --ansi -vvv -- pathfinderecho'
 - alias execpathfound='php scripts/install-manager.php --ansi -vvv -- execpathfound'
-- alias run='php scripts/install-manager.php --ansi -vvv -- run'
+- alias pathless='php scripts/install-manager.php --ansi -vvv -- pathless'
 - alias where='php scripts/install-manager.php --ansi -vvv -- where'
 - sp
 
@@ -74,7 +74,7 @@ before_install:
 
 # PHPUnit (+ PHPStan for PHP 5.6+)
 - php scripts/install-manager.php -vvv --ansi -- failsafe composer global require --dev phpstan/phpstan-phpunit
-- php scripts/install-manager.php -vvv --ansi -- run composer global require --dev phpunit/phpunit
+- php scripts/install-manager.php -vvv --ansi -- pathless composer global require --dev phpunit/phpunit
 
 - failsafe phpstan --version
 - failsafe phpstan help analyse
