@@ -18,8 +18,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class PathlessCommand extends Command
 {
-    const NAME = 'run';
-    const DESCRIPTION = 'Command line run from Process';
+    const NAME = 'pathless';
+    const DESCRIPTION = 'Command line run (without using the system PATH) from Process';
 
     protected function configure()
     {
