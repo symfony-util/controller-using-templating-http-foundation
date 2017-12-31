@@ -36,7 +36,8 @@ class RunCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
+        print_r($input->getArgument('commandline'));
+        $finder = (new Finder())->files()->name($input->getArgument('commandline')[0])->ignoreDotFiles(false)->ignoreUnreadableDirs();
         foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory) {
             if (is_dir($directory) || glob($directory, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR)) {
                 $finder = $finder->in($directory);
