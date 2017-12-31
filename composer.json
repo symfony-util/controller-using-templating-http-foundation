@@ -40,10 +40,13 @@
         "where": [
             "@php scripts/install-manager.php --ansi -vvv -- where"
         ],
+        "run": [
+            "@php scripts/install-manager.php --ansi run"
+        ],
         "php-cs-fixer:diff": [
             "@composer global require --dev symfony-util/coding-standards-fixer:master-dev@dev friendsofphp/php-cs-fixer",
             "@where php-cs-fixer",
-            "php-cs-fixer --version",
+            "@php scripts/install-manager.php --ansi run -vvv -- php-cs-fixer --version",
             "php-cs-fixer fix --diff --dry-run -vvv --using-cache=no",
             "@composer global remove --dev symfony-util/coding-standards-fixer friendsofphp/php-cs-fixer"
         ],
