@@ -72,10 +72,7 @@ class RunCommand extends Command
 
             return $helper->run(
                 $output,
-                array_merge(
-                    [$file->getRealPath()],
-                    $input->getArgument('commandarguments')
-                )
+                $input->getArgument('commandline')
             )->getExitCode();
         } elseif ($file->isReadable()) {
             // echo 'Readeable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
@@ -84,8 +81,8 @@ class RunCommand extends Command
             return $helper->run(
                 $output,
                 array_merge(
-                    [PHP_BINARY, $file->getRealPath()],
-                    $input->getArgument('commandarguments')
+                    [PHP_BINARY],
+                    $input->getArgument('commandline')
                 )
             )->getExitCode();
         }
