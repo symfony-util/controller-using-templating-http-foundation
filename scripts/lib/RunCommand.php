@@ -63,6 +63,8 @@ class RunCommand extends Command
         if (null === $file) {
             return;
         }
+        //^ This implements failsafe, what about an error exit code?
+
         if ($file->isExecutable()) {
             // echo 'Executable: '.$file->getRelativePathname().PHP_EOL; // Relative to ->in(...)
             // echo 'Executable: '.$file->getRealPath().PHP_EOL;
