@@ -21,7 +21,7 @@ $application = new Application();
 
 $application->add(new InstallPhpstanPhpUnitCommand());
 $application->add(new FailSafeCommand());
-$application->add(new RunCommand());
+$application->add(new PathlessCommand());
 $application->add(new OrSuccessCommand());
 $application->add(new PathFinderEchoCommand());
 $application->add(new ExecutePathFoundCommand());
