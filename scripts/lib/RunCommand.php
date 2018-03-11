@@ -39,7 +39,8 @@ class RunCommand extends Command
         print_r($input->getArgument('commandline'));
         $finder = new Finder();
         $finder = $finder->files();
-        $finder = $finder->name($input->getArgument('commandline')[0]);
+        $commandlineInput = $input->getArgument('commandline');
+        $finder = $finder->name($commandlineInput[0]);
         $finder = $finder->ignoreDotFiles(false);
         $finder = $finder->ignoreUnreadableDirs();
         foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory) {
