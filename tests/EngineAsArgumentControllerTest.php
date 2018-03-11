@@ -29,10 +29,11 @@ final class EngineAsArgumentControllerTest extends TestCase
 
     public function testReturnsResponse()
     {
+        $engine = new EngineAsArgumentController();
         $this->assertInstanceOf(
             'Symfony\Component\HttpFoundation\Response',
-            (new EngineAsArgumentController())->__invoke(new TwigEngine(
-                new Twig_Environment(new Twig_Loader_Array(['index.html.twig' => 'Hello World!'])),
+            $engine->__invoke(new TwigEngine(
+                new Twig_Environment(new Twig_Loader_Array(array('index.html.twig' => 'Hello World!'))),
                 new TemplateNameParser()
             ))
         );
