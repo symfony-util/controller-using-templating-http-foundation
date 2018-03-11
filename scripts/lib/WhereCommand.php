@@ -36,7 +36,11 @@ class WhereCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $finder = (new Finder())->files()->name($input->getArgument('name'))->ignoreDotFiles(false)->ignoreUnreadableDirs();
+        $finder = new Finder();
+        $finder = $finder->files();
+        $finder = $finder->name($input->getArgument('name'));
+        $finder = $finder->ignoreDotFiles(false);
+        $finder = $finder->ignoreUnreadableDirs();
         foreach (explode(PATH_SEPARATOR, getenv('PATH')) as $directory) {
             if (is_dir($directory) || glob($directory, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR)) {
                 $finder = $finder->in($directory);
