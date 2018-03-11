@@ -101,7 +101,7 @@ class ExecutePathFoundCommand extends Command
             return $helper->run(
                 $output,
                 array_merge(
-                    [$file->getRealPath()],
+                    array($file->getRealPath()),
                     $input->getArgument('commandarguments')
                 )
             )->getExitCode();
@@ -112,7 +112,7 @@ class ExecutePathFoundCommand extends Command
             return $helper->run(
                 $output,
                 array_merge(
-                    [PHP_BINARY, $file->getRealPath()],
+                    array(PHP_BINARY, $file->getRealPath()),
                     $input->getArgument('commandarguments')
                 )
             )->getExitCode();
