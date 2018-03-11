@@ -15,7 +15,7 @@
     "require-dev": {
         "symfony/twig-bridge": "^2.0 || ^3.0 || ^4.0",
         "symfony/var-dumper": "^2.0 || ^3.0 || ^4.0",
-        "symfony-util/coding-standards-fixer": "2017.05.x-dev",
+        "symfony-util/coding-standards-fixer": "^5.3.0@alpha",
         "twig/twig": "^1.0 || ^2.0"
     },
     "suggest": {
@@ -33,7 +33,6 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "5.3.x-dev"
         }
     },
     "scripts": {
