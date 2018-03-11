@@ -86,7 +86,7 @@ class RunCommand extends Command
             return $helper->run(
                 $output,
                 array_merge(
-                    [PHP_BINARY],
+                    array(PHP_BINARY),
                     $input->getArgument('commandline')
                 )
             )->getExitCode();
