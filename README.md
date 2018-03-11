@@ -64,6 +64,7 @@ Icon: https://material.io/icons/#ic_wallpaper
 ##### _string_ arguments
 * string arguments can officially be type-hinted from php 7.0
 * http://php.net/manual/en/functions.arguments.php
+##### Why code in scripts directory in 5.3 and 5.4 branches is not included in ^7?
 
 ### Versions
 #### PHP
