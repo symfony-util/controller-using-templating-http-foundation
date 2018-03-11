@@ -43,8 +43,8 @@ before_install:
 - install --directory .travis/bin # use $HOME instead
 - ls --color $HOME
 - ls --color ~
-- ls --color $HOME/bin
-- ls --color ~/bin
+# - ls --color $HOME/bin
+# - ls --color ~/bin
 - install --directory ~/bin # use $HOME instead
 - ls --color $HOME
 - ls --color ~
