@@ -51,7 +51,7 @@ final class TemplatingControllerTest extends TestCase
         $controller = new TemplatingController(new TwigEngine(
             new Twig_Environment(new Twig_Loader_Array(array('index.html.twig' => 'Hello World!'))),
             new TemplateNameParser()
-        ))
+        ));
         $this->assertInstanceOf(
             'Symfony\Component\HttpFoundation\Response',
             $controller->__invoke()
