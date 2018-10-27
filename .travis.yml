@@ -27,6 +27,8 @@ matrix:
     dist: trusty
     env:
     - SYMFONY_VERSION="2.3.*"
+  allow_failures:
+  - php: 7.2
 
 before_install:
 - shopt -s expand_aliases
