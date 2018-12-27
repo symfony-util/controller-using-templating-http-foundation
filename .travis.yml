@@ -63,7 +63,7 @@ matrix:
   allow_failures:
   - php: nightly
   - php: 7.0 # Sensio security
-  - php: 7.3
+  - php: 7.4
 
 before_install:
 - source /etc/os-release ; echo $VERSION
